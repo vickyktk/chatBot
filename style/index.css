@@ -10,7 +10,7 @@ body{
 
 }
 .container{
-    width:500px;
+    width:400px;
     text-align: center;
     margin-top: 30px;
 }
@@ -45,8 +45,8 @@ h1{
 .msg-container{
     background-color: hotpink;
     width: 250px;
-    margin-left: 100px;
-    margin-top: 10px;
+    margin-left: 60px;
+    margin-top: 15px;
 }
 
 
