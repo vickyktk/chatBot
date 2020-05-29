@@ -5,15 +5,16 @@ var server=http.createServer(app)
 var io=require('socket.io')(server)
 
 
+app.set('view engine','ejs')
+
 app.use('/style',express.static('style'))
 app.get('/',(req,res)=>{
-    res.sendFile(__dirname+'/form.html')
+    res.render('form')
 })
 
 app.get('/index',(req,res)=>{
-    res.sendFile(__dirname+'/index.html')
+    res.render('index')
 })
-
 
 
 io.on('connection',socket=>{
