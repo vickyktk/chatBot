@@ -3,13 +3,28 @@ const app=express();
 const http=require('http')
 var server=http.createServer(app)
 var io=require('socket.io')(server)
+const bodyparser = require('body-parser')
+const flash=require('express-flash')
+const session=require('express-session')
+const passport = require('passport')
+const expressValidator = require('express-validator')
+const expressLayouts=require('express-ejs-layouts')
 
 
+//MiddleWare for Template engine EJS
 app.set('view engine','ejs')
 
+//MiddleWare for Epress-layouts
+app.use(expressLayouts)
+
+
 app.use('/style',express.static('style'))
-app.get('/',(req,res)=>{
-    res.render('form')
+app.get('/Login',(req,res)=>{
+    res.render('Login')
+})
+
+app.get('/register',(req,res)=>{
+    res.render('Register')
 })
 
 app.get('/index',(req,res)=>{
