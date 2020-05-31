@@ -19,6 +19,9 @@ app.use(expressLayouts)
 
 
 app.use('/style',express.static('style'))
+app.get('/',(req,res)=>{
+    res.render('Login')
+})
 app.get('/Login',(req,res)=>{
     res.render('Login')
 })
