@@ -1,5 +1,5 @@
 let mongoose=require('mongoose')
-let keys=require('../config/keys')
+let keys=require('.././config/keys')
 
 mongoose.connect(keys.mongo.url,({
     useNewUrlParser:true,
