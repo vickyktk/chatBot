@@ -8,15 +8,13 @@
 }
 
 .body{
-    background-color: rgb(65, 61, 85);
+    background-color: rgb(146, 139, 180);
 
 }
 .links{
     position: absolute;
     margin-left: 42%;
     margin-top: 30px;
-
-
 }
 
 /* Styling Login page */
@@ -30,7 +28,7 @@
     top:20%;
     left:40%;
     width:230px;
-    height: 370px;
+    max-height: 670px;
     line-height: normal;
     background-color: rgb(244, 243, 252,1);
     opacity: 2;
@@ -95,7 +93,8 @@ span a{
     top:20%;
     left:40%;
     width:230px;
-    height:430px;
+    max-height: 1300px;
+
     line-height: normal;
     background-color: rgb(244, 243, 252,1);
     opacity: 2;
@@ -108,7 +107,7 @@ span a{
 
 @media(max-width:720px){
     .signup{
-        left:10%;
+        left:20%;
         top:10%;
     }
 

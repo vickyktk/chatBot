@@ -1,15 +1,6 @@
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-        <link rel="stylesheet" href="style/index.css">
-            <title>Chat App</title>
-    </head>
-    <body>
+
         <div class="container">
-            <h1>Welcome To ChatBot</h1>
+            <h1>Welcome To ChatBot <span id="user"><%= user[0].username %></span> </h1>
             <input type="text" name="msg" id="msg">
             <button id="send">Send</button>
 
@@ -21,11 +12,14 @@
         <script src="/socket.io/socket.io.js"></script>
         <script>
             var socket=io();
-            let params=new URLSearchParams(location.search);
-            var name=params.get('name')
-            var deptt=params.get('select')
 
-            socket.emit('user',name)
+
+            // let params=new URLSearchParams(location.search);
+            // var name=params.get('name')
+            // var deptt=params.get('select')
+            let user=document.getElementById('user').textContent
+
+            socket.emit('user',user)
 
             var div=document.getElementById('msg-container');
 
@@ -60,7 +54,7 @@
             var send=document.getElementById('send')
             send.addEventListener('click',()=>{
                 var msg=document.getElementById('msg').value;
-                socket.emit('newMsg',{msg:msg,user:name})
+                socket.emit('newMsg',{msg:msg,user:user})
 
                 document.getElementById('msg').value=''
                 document.getElementById('msg').focus();
@@ -80,13 +74,3 @@
 
 
         </script>
-
-<script
-src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
-crossorigin="anonymous"></script>
-
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-    </body>
-    </html>

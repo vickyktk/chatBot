@@ -1,19 +1,24 @@
-<div class="signup" >
-    <h5>REGISTER HERE</h5><br>
 
-    
+<div class="signup" >
+    <%- include('partials/messages')  -%>
+
+    <h3 style="color: blue;">Register Here</h3>
+    <hr style="background-color: blue; height:4px;">
+
     <a class="btn btn-danger" href="/Google">Google</a>
 
     <a class="btn btn-info" href="/facebook">Facebook</a>
     <br><br>
     <div class="form">
-        <form action="#">
+        <form action="Register" method="POST">
             Name:<br>
-            <input type="text" id="username" placeholder="username"><br>
+            <input type="text" id="username" name="username" placeholder="username"
+            value="<%= typeof username != 'undefined' ? username :'' %>" required><br>
             Email:<br>
-            <input type="email" id="mobile" placeholder="Your Email"><br>
+            <input type="email" id="email" name="email" placeholder="Your Email"
+            value="<%= typeof email !='undefined' ? email:'' %>"><br>
             Password: <br>
-            <input type="password" id="password" placeholder="Password"><br>
+            <input type="password" name="password" id="password" placeholder="Password"><br>
             <input type="submit" value="Register" ><span>OR <a href="/Login">Login</a></span>
         </form>
     </div>

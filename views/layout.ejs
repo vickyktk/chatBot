@@ -9,6 +9,54 @@
     <title>Document</title>
 </head>
 <body class="body">
+
+        
+      <!------------------ header ------------------->
+
+		<div class="row">
+			<div class="col-sm-12">
+				<nav class="navbar navbar-expand-sm bg-dark">
+					<div>
+						<a href="/" class="navbar-brand text-center logo">NODEAPP</a>
+						
+					</div>
+
+
+
+			<button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#collapsiblenavbar">
+          	<span class="navbar-toggler-icon"><i class="fa fa-bars"></i></span>
+            </button>
+
+
+                        <div class="collapse navbar-collapse navbar" id="collapsiblenavbar"
+            >  
+
+		<ul class="navbar-nav nav-pills ml-auto">
+			<li class="nav-item"><a href="/" class="nav-link ">Home</a></li>
+
+					
+			
+				<%   if(user)  {  %>
+
+					<li class="nav-item"><a href="/Logout" class="nav-link">Logout</a></li>
+		
+			<%	} %>
+			<%  if(!user) { %>
+			<li class="nav-item dropdown"><a href="" class="nav-link dropdown-toggle" data-toggle="dropdown">Login</a>
+				<ul class="dropdown-menu">
+					<li class="dropdown-item"><a href="/register" class="nav-link ">Register</a></li>
+
+					<li class="dropdown-item"><a href="/Login" class="nav-link active">Login</a></li>
+				</ul></li>
+			<% } %>					
+			</ul>
+
+
+
+					</div>
+				</nav>
+			</div>
+		</div>
     <div class="container">
 
         <%- body %>

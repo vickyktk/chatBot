@@ -3,19 +3,22 @@
 <div >
 
     <div class="login">
+        <%- include('partials/messages') -%>
+   
 
-        <h3>Login Here</h3>
+        <h3 style="color: blue;">Login Here <%= user %></h3>
+        <hr style="background-color: blue; height:4px;">
 
         <a class="btn btn-danger" href="/Google">Google</a>
         <a class="btn btn-info" href="/facebook">Facebook</a>
-        <br />
+        <br ><br>
    
         <div class="form">
-            <form action="#">
-                Name:<br>
-                <input type="email" placeholder="Email"><br>
+            <form action="Login" method="POST">
+                Email:<br>
+                <input type="email" placeholder="Email" name="Email"><br>
                 Password:<br>
-                <input type="password" placeholder="Your Password"><br>
+                <input type="password" placeholder="Your Password" name="password"><br>
                 <input type="submit" value="Login"> <span>or <a href="/Register" id="register">register</a></span>
             </form>
         </div>
