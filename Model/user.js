@@ -1,7 +1,8 @@
 let mongoose=require('mongoose')
-let keys=require('.././config/keys')
+let url='mongodb+srv://waqasKhattak:database85@testcluster-ezzzf.mongodb.net/test?retryWrites=true&w=majority'
+// let keys=require('.././config/keys')
 
-mongoose.connect(keys.mongo.url,({
+mongoose.connect(url,({
     useNewUrlParser:true,
     useUnifiedTopology:true
 })),(err)=>{
