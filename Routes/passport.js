@@ -75,6 +75,8 @@ passport.use('facebook',new FbStrategy({
     clientID:'168818324261752',
     clientSecret: 'ede814d74e651b06050c5bd49d8f7df3',
     callbackURL: "http://localhost:3000/facebook/callback",
+    callbackURL:'https://realtimechatt.herokuapp.com/facebook/callback',
+
     profileFields: ['id', 'displayName', 'photos', 'email']
     },
     (accessToken, refreshToken, profile, cb)=>{
