@@ -41,7 +41,7 @@ passport.use('google' ,new GoogleStrategy({
     clientID:'198592292960-ujhmjkvkkgfupe5ouaqtflnke6hii0qj.apps.googleusercontent.com',
     clientSecret:'-MMn1Z6iMqM9E-_aVr21JjxF',
     callbackURL:'http://localhost:3000/google/callback',
-    callbackURL:'https://realtimechatt.herokuapp.com//google/callback'
+    callbackURL:'https://realtimechatt.herokuapp.com/google/callback'
 },(accessToken,refreshToken,profile,cb)=>{
     let username=profile.displayName
     let email=profile._json.email
