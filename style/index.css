@@ -41,7 +41,7 @@
 @media(max-width:720px){
    .login{
        left:20%;
-       top:10%;
+       top:40%;
 
    }
 
@@ -108,7 +108,7 @@ span a{
 @media(max-width:720px){
     .signup{
         left:20%;
-        top:10%;
+        top:40%;
     }
 
     .signup input{
