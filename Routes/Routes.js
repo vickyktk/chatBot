@@ -77,6 +77,8 @@ Router.post('/Register',(req,res)=>{
             let user={
                 username,
                 email,
+                googleID:'',
+                FBID:'',
                 password
             }
             //hashing the password
@@ -126,6 +128,25 @@ Router.get('/logout',(req,res)=>{
     req.logout()
     req.flash('success_msg','You are logged out')
   res.redirect('Login')
+})
+
+
+Router.get('/google',passport.authenticate('google',{
+    scope:['profile','email']
+    }))
+   
+
+Router.get('/google/callback',passport.authenticate('google'),(req,res)=>{
+    res.redirect('/index')
+})
+
+
+Router.get('/facebook',passport.authenticate('facebook',{authType:'rerequest',scope:['email']},{
+
+}))
+
+Router.get('/facebook/callback',passport.authenticate('facebook'),(req,res)=>{
+    res.redirect('/index')
 })
 
 module.exports=Router;

@@ -7,7 +7,7 @@ mongoose.connect(url,({
     useUnifiedTopology:true
 })),(err)=>{
     if (err) throw err
-    console.log('Mogno DB Connected')
+    console.log('Mongo DB Connected')
 }
 
 let schema=mongoose.Schema({
@@ -18,6 +18,14 @@ let schema=mongoose.Schema({
     email:{
         type:String,
         required:true
+    },
+    googleID:{
+        type:String,
+        require:true
+    },
+    FBID:{
+        type:String,
+        require:true
     },
     password:{
         type:String,
