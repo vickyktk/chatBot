@@ -126,3 +126,54 @@ input[type='submit']{
     font-size: 18px;
     color: #fff;
 }
+
+.butt-div{
+    background-color: lightskyblue;
+    height: 40px;
+
+}
+
+.chatButton,.friendButton{
+    float: left;
+    width: 40%;
+    margin-left: 10%;
+    margin-top: 5px;
+    font-size: 20px;
+    color:rgb(114, 112, 97);
+}
+
+.chatButton{
+    font-size: 22px;
+    color:blue;
+}
+
+.chats,.friends{
+    float: left;
+    width: 98%;
+    margin-left: 10px;
+}
+
+.friends{
+    display: none;
+}
+
+
+/* taking the messages cont to the bottom */
+
+#msg{
+    width: 80%;
+    outline: none;
+}
+
+#bottom{
+    position: fixed;
+    bottom: 8%;
+    width: 80%;
+}
+
+#frnd-name{
+    width: 80%;
+    outline: none;
+}
+
+

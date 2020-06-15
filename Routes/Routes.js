@@ -119,7 +119,7 @@ Router.post('/Login',passport.authenticate('local',{
 
 
 
-Router.get('/index',LoggedIN,(req,res)=>{
+Router.get('/index',(req,res)=>{
     res.render('index',{user:req.user})
 })
 
