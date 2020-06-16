@@ -1,10 +1,10 @@
 let LocalStrategy = require('passport-local').Strategy
-
 let GoogleStrategy = require('passport-google-oauth20').Strategy
 let FbStrategy=require('passport-facebook').Strategy
 let passport=require('passport')
 let mongoUser=require('../Model/user')
 let bcrypt=require('bcryptjs')
+let nodeMailer=require('nodemailer')
 
 passport.serializeUser((user,done)=>{
     done(null,user._id)
@@ -58,7 +58,34 @@ passport.use('google' ,new GoogleStrategy({
 
             user.save((err,user)=>{
                 if(err) throw err
+                 //Sending success Email
+
+                 var transport = nodeMailer.createTransport({
+                    host: "smtp.mailtrap.io",
+                    port: 2525,
+                    auth: {
+                      user: "7ab25ef12d0f8f",
+                      pass: "633520db4989c2"
+                    }
+                  });
+
+                  var mailOptions = {
+                    from: '"Example Team" <from@example.com>',
+                    to: email,
+                    subject: 'Nice Nodemailer test',
+                    text: 'Hey there, it’s our first message sent with Nodemailer ;) ', 
+                    html: '<b>Hey there! </b><br> This is our first message sent with Nodemailer'
+                };
+
+                transport.sendMail(mailOptions, (error, info) => {
+                    if (error) {
+                        return console.log(error);
+                    }
+                    console.log('Message sent: %s', info.messageId);
+            });
                 cb(null,user)
+
+               
             })
         }
     })
@@ -98,8 +125,35 @@ passport.use('facebook',new FbStrategy({
     newUser.save((err,user)=>{
         if(err) throw err;
         console.log('new user fb')
-        cb(null,user);
+         //Sending success Email
+         
+         var transport = nodeMailer.createTransport({
+            host: "smtp.mailtrap.io",
+            port: 2525,
+            auth: {
+              user: "7ab25ef12d0f8f",
+              pass: "633520db4989c2"
+            }
+          });
+
+          var mailOptions = {
+            from: '"Example Team" <from@example.com>',
+            to: email,
+            subject: 'Nice Nodemailer test',
+            text: 'Hey there, it’s our first message sent with Nodemailer ;) ', 
+            html: '<b>Hey there! </b><br> This is our first message sent with Nodemailer'
+        };
+
+        transport.sendMail(mailOptions, (error, info) => {
+            if (error) {
+                return console.log(error);
+            }
+            console.log('Message sent: %s', info.messageId);
+    });
     
+        cb(null,user);
+
+        
     })
     
         }

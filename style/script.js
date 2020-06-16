@@ -9,8 +9,8 @@ let shareButton=document.getElementById('share')
 
 //Enabling share the site
 let data={
+    title:'CHATAPP',
     text:'Instant Text Messages',
-    title:'RealTime Chat App',
     url:'https://realtimechatt.herokuapp.com/'
 }
 shareButton.addEventListener('click',async()=>{

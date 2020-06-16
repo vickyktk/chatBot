@@ -9,8 +9,11 @@ const session=require('express-session')
 const passport = require('passport')
 const expressValidator = require('express-validator')
 const expressLayouts=require('express-ejs-layouts')
+const nodeMailer=require('nodemailer')
 const Routes=require('./Routes/Routes')
 
+
+require('dotenv').config()
 require('./Routes/passport');
 
 

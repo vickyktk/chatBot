@@ -6,6 +6,7 @@ let mongoUser=require('../Model/user')
 let bcrypt=require('bcryptjs')
 let flash=require('express-flash')
 let passport=require('passport')
+let nodeMailer=require('nodemailer')
 
 
 
@@ -93,6 +94,31 @@ Router.post('/Register',(req,res)=>{
                     console.log(user)
                     req.flash('success_msg','Successfully Signed UP !!! Login Now')
                     res.redirect('/Login')
+                     //Sending success Email
+
+                var transport = nodeMailer.createTransport({
+                    host: "smtp.mailtrap.io",
+                    port: 2525,
+                    auth: {
+                      user: "7ab25ef12d0f8f",
+                      pass: "633520db4989c2"
+                    }
+                  });
+
+                  var mailOptions = {
+                    from: '"Example Team" <from@example.com>',
+                    to: user.email,
+                    subject: 'Nice Nodemailer test',
+                    text: 'Hey there, it’s our first message sent with Nodemailer ;) ', 
+                    html: '<b>Hey there! </b><br> This is our first message sent with Nodemailer'
+                };
+
+                transport.sendMail(mailOptions, (error, info) => {
+                    if (error) {
+                        return console.log(error);
+                    }
+                    console.log('Message sent: %s', info.messageId);
+            });
                 })
             })
 
