@@ -70,7 +70,7 @@ passport.use('google' ,new GoogleStrategy({
                   });
 
                   var mailOptions = {
-                    from: '"Example Team" <from@example.com>',
+                    from: '"CHATEHERE TEAM" <waqasktk81@gmail.com>',
                     to: email,
                     subject: 'Nice Nodemailer test',
                     text: 'Hey there, it’s our first message sent with Nodemailer ;) ', 
@@ -137,7 +137,7 @@ passport.use('facebook',new FbStrategy({
           });
 
           var mailOptions = {
-            from: '"Example Team" <from@example.com>',
+            from: '"CHATEHERE TEAM" <waqasktk81@gmail.com>',
             to: email,
             subject: 'Nice Nodemailer test',
             text: 'Hey there, it’s our first message sent with Nodemailer ;) ', 

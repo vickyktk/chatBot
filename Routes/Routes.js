@@ -106,7 +106,7 @@ Router.post('/Register',(req,res)=>{
                   });
 
                   var mailOptions = {
-                    from: '"Example Team" <from@example.com>',
+                    from: '"CHATEHERE TEAM" <waqasktk81@gmail.com>',
                     to: user.email,
                     subject: 'Nice Nodemailer test',
                     text: 'Hey there, it’s our first message sent with Nodemailer ;) ', 
@@ -145,7 +145,7 @@ Router.post('/Login',passport.authenticate('local',{
 
 
 
-Router.get('/index',(req,res)=>{
+Router.get('/index',LoggedIN,(req,res)=>{
     res.render('index',{user:req.user})
 })
 

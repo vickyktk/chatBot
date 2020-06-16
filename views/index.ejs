@@ -7,8 +7,10 @@
     
      <div class="container">
             <div class="bottom" id="bottom">
-                <input type="text" placeholder="Enter Your message..." name="msg" id="msg">
-             <button id="send">Send</button>
+                <form action="">
+                    <input type="text" placeholder="Enter Your message..." name="msg" id="msg">
+             <input type="submit" value="Send" id="send">
+                </form>
             </div> 
 
          <div class="msg-container" id="msg-container">
@@ -67,7 +69,8 @@
             
             //Sending message to the backend
             var send=document.getElementById('send')
-            send.addEventListener('click',()=>{
+            send.addEventListener('click',(e)=>{
+                e.preventDefault()
                 var msg=document.getElementById('msg').value;
                 socket.emit('newMsg',{msg:msg,user:user})
 
