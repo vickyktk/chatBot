@@ -40,8 +40,8 @@ passport.use(new LocalStrategy({usernameField:'Email'},(Email,password,cb)=>{
 passport.use('google' ,new GoogleStrategy({
     clientID:'198592292960-ujhmjkvkkgfupe5ouaqtflnke6hii0qj.apps.googleusercontent.com',
     clientSecret:'-MMn1Z6iMqM9E-_aVr21JjxF',
-    callbackURL:'http://localhost:3000/google/callback',
-    callbackURL:'https://realtimechatt.herokuapp.com/google/callback'
+    callbackURL:'http://localhost:3000/google/callback'
+    // callbackURL:'https://realtimechatt.herokuapp.com/google/callback'
 },(accessToken,refreshToken,profile,cb)=>{
     let username=profile.displayName
     let email=profile._json.email
@@ -58,6 +58,8 @@ passport.use('google' ,new GoogleStrategy({
 
             user.save((err,user)=>{
                 if(err) throw err
+                cb(null,user)
+
                  //Sending success Email
 
                  var transport = nodeMailer.createTransport({
@@ -83,7 +85,6 @@ passport.use('google' ,new GoogleStrategy({
                     }
                     console.log('Message sent: %s', info.messageId);
             });
-                cb(null,user)
 
                
             })
@@ -124,7 +125,8 @@ passport.use('facebook',new FbStrategy({
     
     newUser.save((err,user)=>{
         if(err) throw err;
-        console.log('new user fb')
+        cb(null,user);
+
          //Sending success Email
          
          var transport = nodeMailer.createTransport({
@@ -150,9 +152,6 @@ passport.use('facebook',new FbStrategy({
             }
             console.log('Message sent: %s', info.messageId);
     });
-    
-        cb(null,user);
-
         
     })
     
