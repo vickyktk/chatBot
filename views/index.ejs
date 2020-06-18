@@ -1,5 +1,6 @@
 <div class="butt-div">
-    <a href="#" class="chatButton" id="chatButton">Chats</a>
+    
+    <a href="#" class="chatButton" id="chatButton">Chats <span id="type"></span></a>
     <a href="#" class="friendButton" id="friendButton">Friends</a>
 </div>
 <input type="hidden" name="user" id="user" value="<%= user[0].username %>">
@@ -82,10 +83,34 @@
             //Recieving the msg from the back-end and printing it on the client
             socket.on('newMsg',(info)=>{
                 var para=document.createElement('p')
+                if(info.user==user){
+                para.innerHTML=` ${info.msg} `;
+                }else{
                 para.innerHTML=`<b>${info.user}:</b> ${info.msg} `;
+
+                }
                 div.appendChild(para)
             })
 
+
+
+            //Someone is typing
+            let msg_box=document.getElementById('msg')
+            let type=document.getElementById('type')
+
+
+            msg_box.addEventListener('keyup',(e)=>{
+                socket.emit('typing',user)
+            })
+
+
+            socket.on('notifyTyping',(user)=>{
+                type.innerHTML=`${user} is typing`
+            })
+
+            msg_box.addEventListener('mouseleave',()=>{
+                type.innerHTML=``
+            })
 
 
 

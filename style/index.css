@@ -11,6 +11,26 @@
     background-color: rgb(146, 139, 180);
 
 }
+
+/* Logo */
+.logo{
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 900;
+    font-size: 25px;
+    color: deeppink;
+    transition: 1s ease-in-out;
+}
+.logo:hover{
+    color: deeppink;
+    font-size: 27px;
+}
+
+#type{
+    font-size: 10px;
+    margin-top: 3px;
+    color: deeppink;
+}
+
 .links{
     position: absolute;
     margin-left: 42%;
@@ -116,6 +136,8 @@ span a{
     }
  }
  
+
+ /* send chat button */
 #send{
     width:50px;
     height: 27px;
@@ -143,6 +165,7 @@ input[type='submit']{
     margin-top: 5px;
     font-size: 20px;
     color:rgb(114, 112, 97);
+    text-decoration: none;
 }
 
 .chatButton{

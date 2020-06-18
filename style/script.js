@@ -32,9 +32,6 @@ chatButton.addEventListener('click',(e)=>{
     chatButton.style.fontSize='22px'
     chatButton.style.color='blue'
 
-
-
-
     chatSection.style.display='block'
 })
 

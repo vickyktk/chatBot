@@ -98,10 +98,16 @@ io.on('connection',socket=>{
     //Recieving the msg
 
     socket.on('newMsg',(info)=>{
-
-
         io.emit('newMsg',info)
         
+    })
+
+
+    //SomeOne is typing
+
+
+    socket.on('typing',(user)=>{
+        socket.broadcast.emit('notifyTyping',user)
     })
 
 
