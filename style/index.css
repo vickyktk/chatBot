@@ -25,11 +25,7 @@
     font-size: 27px;
 }
 
-#type{
-    font-size: 10px;
-    margin-top: 3px;
-    color: deeppink;
-}
+
 
 .links{
     position: absolute;
@@ -138,10 +134,10 @@ span a{
  
 
  /* send chat button */
-#send{
+/* #send{
     width:50px;
     height: 27px;
-}
+} */
 .signup 
 input[type='submit']{
     
@@ -191,6 +187,11 @@ input[type='submit']{
     outline: none;
 }
 
+@media(max-width:720px){
+    #msg{
+        width: 70%;
+    }
+ }
 #bottom{
     position: fixed;
     bottom: 8%;
@@ -202,4 +203,90 @@ input[type='submit']{
     outline: none;
 }
 
+@media(max-width:720px){
+   #frnd-name{
+       width: 60%;
+   }
+}
 
+#type{
+    font-size: 10px;
+    margin-left: 30px;
+    margin-top: 0px;
+    margin-bottom: 5px;
+    color: deeppink;
+}
+
+/* Styling the list */
+#frndUL{
+    list-style: none;
+    margin-top: 40px;
+}
+#frndUL > li{
+   color: blue;
+   border-bottom: 1px black solid;
+   width: 80%;
+   height: 60px;
+   padding-left: 5px;
+   padding-top: 5px;
+   font-size: 20px;
+   margin-top: 4px;
+   cursor: pointer;
+}
+
+/* Invitation button */
+#invite{
+    
+    margin-left: 30px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    padding: 8px;
+    font-size: x-large;
+    background-color: teal;
+    color: white;
+}
+
+#chatContainer{
+    height:400px;
+    background-color: rgb(228, 228, 236);
+    margin-top: 10px;
+    overflow: auto;
+}
+
+#username{
+    margin-top: 3px;
+    margin-left: 30px;
+}
+
+
+/* Grren Dot of showing online */
+
+.online{
+    background-color: chartreuse;
+    border: 10px red;
+    border-radius: 50%;
+    margin-right: 5px;
+    width:20px;
+    height: 10px;
+}
+
+.me{
+    margin-left: 50%;
+    background-color: darkblue;
+    width: 150px;
+    color: white;
+    border-radius: 20%;
+    padding: 7px;
+}
+.otherUser{
+    margin-left: 1%;
+    background-color: darkcyan;
+    width: 150px;
+    color: white;
+    border-radius: 20%;
+    padding: 7px;
+}
+
+.time{
+    margin-left: 3px;
+}

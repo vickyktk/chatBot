@@ -1,12 +1,19 @@
 <div class="butt-div">
     
-    <a href="#" class="chatButton" id="chatButton">Chats <span id="type"></span></a>
+    <a href="#" class="chatButton" id="chatButton">Chats </a>
     <a href="#" class="friendButton" id="friendButton">Friends</a>
+
+    <p id="username"></p>
+    <span id="type"></span>
 </div>
-<input type="hidden" name="user" id="user" value="<%= user[0].username %>">
-<div class="chats" id="chatDiv">
+<input type="hidden" name="user" id="userName" value="<%= user[0].username %>">
+<input type="hidden" name="user" id="userID" value="<%= user[0]._id %>">
+<input type="hidden" name="user" id="userEmail" value="<%= user[0].email %>">
+
+<div class="chats" id="chatDiv" style="display: none;">
     
-     <div class="container">
+    <!-- Sending chat and displaying it -->
+     <div class="container" id="chatContainer" >
             <div class="bottom" id="bottom">
                 <form action="">
                     <input type="text" placeholder="Enter Your message..." name="msg" id="msg">
@@ -19,10 +26,13 @@
          </div>
 
   </div>
+
+
 <div class="friends" id="friendDiv">
     <input type="text" placeholder="Search Friends..." name="search" id="frnd-name">
-    <button id="send">Search</button>
-    <ul class="friends-list">
+    <button id="send" class="btn btn-success">Search</button><br>
+    <a href="#" id="invite">Invite Friends</a>
+    <ul class="friends-list" id="frndUL">
 
     </ul>
 </div>
@@ -35,7 +45,15 @@
             // let params=new URLSearchParams(location.search);
             // var name=params.get('name')
             // var deptt=params.get('select')
-           let user=document.getElementById('user').value
+           let username=document.getElementById('userName').value
+           let email=document.getElementById('userEmail').value
+           let id=document.getElementById('userID').value
+           let user={
+               username,
+               email,
+               id
+           }
+
 
             socket.emit('user',user)
 
@@ -43,18 +61,42 @@
 
             //Welcome a user
             socket.on('welcome',(data)=>{
-                var para=document.createElement('p')
-                para.innerHTML=` welcome ${data}`;
-                div.appendChild(para)
+
+
+                let frndUL=document.getElementById('frndUL')
+
+                for(let i=0;i<data.Friends.length;i++){
+                    
+                let list=document.createElement('li')
+                list.innerHTML=`${data.Friends[i].username}`
+                let check=data.Friends[i].status
+                if(check == 1){
+                    // let span=document.createElement('span')
+                    // list.appendChild(span)
+                    // span.classList.add('online')
+                    // span.innerHTML='.'     
+                    list.classList.add('frndli')
+                    frndUL.appendChild(list)
+                }else{
+                    
+                list.classList.add('frndli')
+                frndUL.appendChild(list)
+                }
+
+                }
+
             })
 
 
             
             //Notifiying others users 
             socket.on('newUser',(data)=>{
+
                 var para=document.createElement('p')
-                para.innerHTML=`${data} has joined the chat`;
+                para.innerHTML=`${data.username} has joined the chat`;
                 div.appendChild(para)
+
+
             })
 
 
@@ -63,55 +105,7 @@
                 var para=document.createElement('p')
                 para.innerHTML=`${data}`;
                 div.appendChild(para)
+                
             })
-
-
-
-            
-            //Sending message to the backend
-            var send=document.getElementById('send')
-            send.addEventListener('click',(e)=>{
-                e.preventDefault()
-                var msg=document.getElementById('msg').value;
-                socket.emit('newMsg',{msg:msg,user:user})
-
-                document.getElementById('msg').value=''
-                document.getElementById('msg').focus();
-            })
-
-
-            //Recieving the msg from the back-end and printing it on the client
-            socket.on('newMsg',(info)=>{
-                var para=document.createElement('p')
-                if(info.user==user){
-                para.innerHTML=` ${info.msg} `;
-                }else{
-                para.innerHTML=`<b>${info.user}:</b> ${info.msg} `;
-
-                }
-                div.appendChild(para)
-            })
-
-
-
-            //Someone is typing
-            let msg_box=document.getElementById('msg')
-            let type=document.getElementById('type')
-
-
-            msg_box.addEventListener('keyup',(e)=>{
-                socket.emit('typing',user)
-            })
-
-
-            socket.on('notifyTyping',(user)=>{
-                type.innerHTML=`${user} is typing`
-            })
-
-            msg_box.addEventListener('mouseleave',()=>{
-                type.innerHTML=``
-            })
-
-
 
         </script>

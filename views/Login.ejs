@@ -6,7 +6,7 @@
         <%- include('partials/messages') -%>
    
 
-        <h3 style="color: blue;">Login Here <%= user %></h3>
+        <h3 style="color: blue;">Login Here</h3>
         <hr style="background-color: blue; height:4px;">
 
         <a class="btn btn-danger" href="/google">Google</a>
@@ -16,9 +16,9 @@
         <div class="form">
             <form action="Login" method="POST">
                 Email:<br>
-                <input type="email" placeholder="Email" name="Email"><br>
+                <input type="email" required placeholder="Email" name="Email"><br>
                 Password:<br>
-                <input type="password" placeholder="Your Password" name="password"><br>
+                <input type="password" required placeholder="Your Password" name="password"><br>
                 <input type="submit" value="Login"> <span>or <a href="/Register" id="register">register</a></span>
             </form>
         </div>

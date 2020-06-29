@@ -1,12 +1,11 @@
 let express=require('express')
-let expressValidator=require('express-validator')
-let bodyParser=require('body-parser')
 let Router=express.Router()
 let mongoUser=require('../Model/user')
 let bcrypt=require('bcryptjs')
-let flash=require('express-flash')
 let passport=require('passport')
 let nodeMailer=require('nodemailer')
+let userRoutes=require('./userRoutes')
+
 
 
 
@@ -16,7 +15,7 @@ function LoggedIN(req,res,next){
         return next()
       }else{
           req.flash('error','Login first to view this page')
-        res.redirect('Login')
+        res.redirect('/Login')
       }
   }
 
@@ -29,7 +28,7 @@ function notLoggedIN(req,res,next){
   
 }
 
-
+Router.use('/account',userRoutes)
 
 Router.get('/',notLoggedIN,(req,res)=>{
     res.render('Login')
@@ -81,7 +80,8 @@ Router.post('/Register',(req,res)=>{
                 email,
                 googleID:'',
                 FBID:'',
-                password
+                password,
+                status:0
             }
             //hashing the password
             bcrypt.hash(user.password,10,(err,hashedPass)=>{

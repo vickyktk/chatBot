@@ -48,13 +48,14 @@ passport.use('google' ,new GoogleStrategy({
     let googleID=profile.id
     let FBID=''
     let password='dfnjknfksf@fsfj-34'
+    let status=0;
 
     mongoUser.find({email:email},(err,user)=>{
         if(err) throw err
         if(user.length>0){
             cb(null,user[0])
         }else{
-            let user=new mongoUser({username,email,googleID,FBID,password})
+            let user=new mongoUser({username,email,googleID,FBID,password,status})
 
             user.save((err,user)=>{
                 if(err) throw err
@@ -113,6 +114,8 @@ passport.use('facebook',new FbStrategy({
         var googleID='';
         var FBID=profile._json.id
         var password='ffvmkfvmke"@-43352dfsffd'
+        var status=0;
+
     
         
     mongoUser.find({FBID:FBID},(err,user)=>{
@@ -121,7 +124,7 @@ passport.use('facebook',new FbStrategy({
             cb(null,user[0]);
         }else{
             
-    var newUser=new mongoUser({username,email,googleID,FBID,password})
+    var newUser=new mongoUser({username,email,googleID,FBID,password,status})
     
     newUser.save((err,user)=>{
         if(err) throw err;

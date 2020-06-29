@@ -1,13 +1,14 @@
 let mongoose=require('mongoose')
-let url='mongodb+srv://waqasKhattak:database85@testcluster-ezzzf.mongodb.net/test?retryWrites=true&w=majority'
-// let url='mongodb://127.0.0.1:27017/newDB'
+require('dotenv').config()
+// let url=process.env.mongoAtlas
+let url=process.env.mongoLocal
 // let keys=require('.././config/keys')
 
 mongoose.connect(url,({
     useNewUrlParser:true,
     useUnifiedTopology:true
 })),(err)=>{
-    if (err) throw err
+    if(err) throw err
     console.log('Mongo DB Connected')
 }
 let schema=mongoose.Schema({
@@ -30,6 +31,9 @@ let schema=mongoose.Schema({
     password:{
         type:String,
         required:true
+    },
+    status:{
+        type:Number
     }
 })
 
@@ -38,12 +42,19 @@ let user=mongoose.model('user',schema)
 
 module.exports=user
 
-
-
-
-
 // user.find({_id:'5ed8d5052240ee1f94c4a921'},(err,user)=>{
 //     if(err) throw err
 //     console.log(user)
 // })
 
+// user.updateOne({email:'waqasktk81@gmail.com'},{$set:{status:1}},(err,user)=>{
+//     if(err) throw err
+//     console.log(user)
+// })
+
+
+
+// user.deleteMany({},(err,res)=>{
+//     if(err) throw err,
+//     console.log(res)
+// })
