@@ -1,7 +1,7 @@
 let mongoose=require('mongoose')
 require('dotenv').config()
-// let url=process.env.mongoAtlas
-let url=process.env.mongoLocal
+let url=process.env.mongoAtlas
+// let url=process.env.mongoLocal
 // let keys=require('.././config/keys')
 
 mongoose.connect(url,({
@@ -27,10 +27,10 @@ module.exports=chats
 
 
 
-chats.deleteMany({},(err,res)=>{
-    if(err) throw err,
-    console.log(res)
-})
+// chats.deleteMany({},(err,res)=>{
+//     if(err) throw err,
+//     console.log(res)
+// })
 
 
 //Testing
