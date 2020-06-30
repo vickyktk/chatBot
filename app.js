@@ -188,7 +188,6 @@ io.on('connection',socket=>{
                 let newData=new chat(completeData);
                 newData.save((err,cb)=>{
                     if(err) throw err;
-                    console.log('Saved')
                     let room=cb._id
 
                     
@@ -225,7 +224,6 @@ io.on('connection',socket=>{
 
                            //Emitting the mesage to the client the msg
                            io.to(room).emit('newMsg',data)
-                           console.log('emiited',data.time)
                        })
 
                })
