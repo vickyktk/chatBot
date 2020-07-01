@@ -16,9 +16,9 @@
             value="<%= typeof username != 'undefined' ? username :'' %>" required><br>
             Email:<br>
             <input type="email" id="email" name="email" placeholder="Your Email"
-            value="<%= typeof email !='undefined' ? email:'' %>"><br>
+            value="<%= typeof email !='undefined' ? email:'' %>" required><br>
             Password: <br>
-            <input type="password" name="password" id="password" placeholder="Password"><br>
+            <input type="password" name="password" id="password" placeholder="Password" required><br>
             <input type="submit" value="Register" ><span>OR <a href="/Login">Login</a></span>
         </form>
     </div>

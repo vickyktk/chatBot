@@ -38,8 +38,8 @@ passport.use(new LocalStrategy({usernameField:'Email'},(Email,password,cb)=>{
 
 
 passport.use('google' ,new GoogleStrategy({
-    clientID:'198592292960-ujhmjkvkkgfupe5ouaqtflnke6hii0qj.apps.googleusercontent.com',
-    clientSecret:'-MMn1Z6iMqM9E-_aVr21JjxF',
+    clientID:process.env.gclientID,
+    clientSecret:process.env.gclientSecret,
     callbackURL:'http://localhost:3000/google/callback',
     callbackURL:'https://realtimechatt.herokuapp.com/google/callback'
 },(accessToken,refreshToken,profile,cb)=>{
@@ -64,11 +64,11 @@ passport.use('google' ,new GoogleStrategy({
                  //Sending success Email
 
                  var transport = nodeMailer.createTransport({
-                    host: "smtp.mailtrap.io",
-                    port: 2525,
+                    host: process.env.Host,
+                    port:process.env.EMAIL_Port,
                     auth: {
-                      user: "7ab25ef12d0f8f",
-                      pass: "633520db4989c2"
+                      user: process.env.Username,
+                      pass: process.env.Password
                     }
                   });
 
@@ -101,8 +101,8 @@ passport.use('google' ,new GoogleStrategy({
 
 
 passport.use('facebook',new FbStrategy({
-    clientID:'168818324261752',
-    clientSecret: 'ede814d74e651b06050c5bd49d8f7df3',
+    clientID:process.env.FBclientID,
+    clientSecret: process.env.FBclientSecret,
     callbackURL: "http://localhost:3000/facebook/callback",
     callbackURL:'https://realtimechatt.herokuapp.com/facebook/callback',
 
@@ -133,11 +133,11 @@ passport.use('facebook',new FbStrategy({
          //Sending success Email
          
          var transport = nodeMailer.createTransport({
-            host: "smtp.mailtrap.io",
-            port: 2525,
+            host: process.env.Host,
+            port:process.env.EMAIL_Port,
             auth: {
-              user: "7ab25ef12d0f8f",
-              pass: "633520db4989c2"
+              user: process.env.Username,
+              pass: process.env.Password
             }
           });
 

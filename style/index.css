@@ -194,8 +194,8 @@ input[type='submit']{
  }
 #bottom{
     position: fixed;
-    bottom: 8%;
     width: 80%;
+    bottom: 3%;
 }
 
 #frnd-name{
@@ -247,6 +247,7 @@ input[type='submit']{
 }
 
 #chatContainer{
+    position: relative;
     height:400px;
     background-color: rgb(228, 228, 236);
     margin-top: 10px;

@@ -1,17 +1,24 @@
 let mongoose=require('mongoose')
 require('dotenv').config()
-let url=process.env.mongoAtlas
-// let url=process.env.mongoLocal
-// let keys=require('.././config/keys')
+// let url=process.env.mongoAtlas
+let url=process.env.mongoLocal
 
 mongoose.connect(url,({
     useNewUrlParser:true,
     useUnifiedTopology:true
-})),(err)=>{
-    if(err) throw err
-    console.log('Mongo DB Connected')
-}
+}))
 
+mongoose.connection.on('connection',()=>{
+    console.log('mongoDB connected')
+})
+
+mongoose.connection.on('disconnect',()=>{
+    console.log('MongoDB disconnected')
+})
+
+mongoose.connection.on('error',(er)=>{
+    console.log('Error in connecting MongoDB',er)
+})
 let schema2=mongoose.Schema({
     users:{
         type:Array

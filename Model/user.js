@@ -1,16 +1,13 @@
 let mongoose=require('mongoose')
 require('dotenv').config()
-let url=process.env.mongoAtlas
-// let url=process.env.mongoLocal
-// let keys=require('.././config/keys')
+// let url=process.env.mongoAtlas
+let url=process.env.mongoLocal
 
 mongoose.connect(url,({
     useNewUrlParser:true,
     useUnifiedTopology:true
-})),(err)=>{
-    if(err) throw err
-    console.log('Mongo DB Connected')
-}
+}))
+
 let schema=mongoose.Schema({
     username:{
         type:String,

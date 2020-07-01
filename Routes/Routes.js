@@ -97,14 +97,14 @@ Router.post('/Register',(req,res)=>{
                     res.redirect('/Login')
                      //Sending success Email
 
-                var transport = nodeMailer.createTransport({
-                    host: "smtp.mailtrap.io",
-                    port: 2525,
-                    auth: {
-                      user: "7ab25ef12d0f8f",
-                      pass: "633520db4989c2"
-                    }
-                  });
+                     var transport = nodeMailer.createTransport({
+                        host: process.env.Host,
+                        port:process.env.EMAIL_Port,
+                        auth: {
+                          user: process.env.Username,
+                          pass: process.env.Password
+                        }
+                      });
 
                   var mailOptions = {
                     from: '"CHATEHERE TEAM" <waqasktk81@gmail.com>',
