@@ -148,36 +148,14 @@ input[type='submit']{
     color: #fff;
 }
 
-.butt-div{
+#userInfo{
     background-color: lightskyblue;
-    height: 40px;
+    height: 50px;
 
 }
 
-.chatButton,.friendButton{
-    float: left;
-    width: 40%;
-    margin-left: 10%;
-    margin-top: 5px;
-    font-size: 20px;
-    color:rgb(114, 112, 97);
-    text-decoration: none;
-}
 
-.chatButton{
-    font-size: 22px;
-    color:blue;
-}
 
-.chats,.friends{
-    float: left;
-    width: 98%;
-    margin-left: 10px;
-}
-
-.friends{
-    display: none;
-}
 
 
 /* taking the messages cont to the bottom */
@@ -254,6 +232,8 @@ input[type='submit']{
     overflow: auto;
 }
 
+
+
 #username{
     margin-top: 3px;
     margin-left: 30px;
@@ -262,19 +242,18 @@ input[type='submit']{
 
 /* Grren Dot of showing online */
 
-.online{
+
+#online{
     background-color: chartreuse;
     border: 10px red;
-    border-radius: 50%;
-    margin-right: 5px;
-    width:20px;
-    height: 10px;
+    margin-left: 80%;
 }
 
+
 .me{
-    margin-left: 50%;
+    margin-left: 30%;
     background-color: darkblue;
-    width: 150px;
+    width: 200px;
     color: white;
     border-radius: 20%;
     padding: 7px;
@@ -282,12 +261,27 @@ input[type='submit']{
 .otherUser{
     margin-left: 1%;
     background-color: darkcyan;
-    width: 150px;
+    width: 200px;
     color: white;
     border-radius: 20%;
     padding: 7px;
 }
 
 .time{
-    margin-left: 3px;
+    position: relative;
+    margin-left: 50%;
+}
+
+
+/* All Users and online USers */
+.usersCount{
+    text-align: center;
+    margin-top: 20px;
+    background-color: rgb(54, 44, 44);
+    color: white;
+}
+
+/* The Black Div For Showing USers */
+#allUsers{
+     margin-right: 10px;
 }

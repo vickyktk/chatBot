@@ -1,7 +1,7 @@
 let mongoose=require('mongoose')
 require('dotenv').config()
-let url=process.env.mongoAtlas
-// let url=process.env.mongoLocal
+// let url=process.env.mongoAtlas
+let url=process.env.mongoLocal
 
 mongoose.connect(url,({
     useNewUrlParser:true,
@@ -34,14 +34,14 @@ module.exports=chats
 
 
 
-// chats.deleteMany({},(err,res)=>{
-//     if(err) throw err,
-//     console.log(res)
-// })
 
 
 //Testing
 
+// chats.deleteMany({},(err,res)=>{
+//     if(err) throw err,
+//     console.log(res)
+// })
 
 // let users=['Shaihd','khattak']
 // let reverse=users.reverse()

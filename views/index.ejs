@@ -1,16 +1,14 @@
-<div class="butt-div">
-    
-    <a href="#" class="chatButton" id="chatButton">Chats </a>
-    <a href="#" class="friendButton" id="friendButton">Friends</a>
 
-    <p id="username"></p>
-    <span id="type"></span>
-</div>
 <input type="hidden" name="user" id="userName" value="<%= user[0].username %>">
 <input type="hidden" name="user" id="userID" value="<%= user[0]._id %>">
 <input type="hidden" name="user" id="userEmail" value="<%= user[0].email %>">
 
 <div class="chats" id="chatDiv" style="display: none;">
+    <div id=userInfo>
+
+    <span id="username"></span><br>
+    <span id="type"></span>
+    </div>
     
     <!-- Sending chat and displaying it -->
      <div class="container" id="chatContainer" >
@@ -30,16 +28,27 @@
 
 <div class="friends" id="friendDiv">
     <input type="text" placeholder="Search Friends..." name="search" id="frnd-name">
-    <button id="send" class="btn btn-success">Search</button><br>
-    <a href="#" id="invite">Invite Friends</a>
-    <ul class="friends-list" id="frndUL">
+    <button id="searchButt" class="btn btn-success">Search</button><br>
 
+    <div class="usersCount">
+        
+    <span class="allUsers" id="allUsers">All Users(<span id="userCount" class="userCount"></span>)</span>
+    <span class="onlineUsers" id="onlineUsers">Online Users(<span id="onlineCount" class="onlineCount"></span>)</span>
+    </div>
+
+    <ul class="friends-list" id="frndUL">
+        
     </ul>
 </div>
 
         <script src="/socket.io/socket.io.js"></script>
         <script>
             var socket=io();
+
+            
+            let allUsers=[];
+            let onlineUsers=[]
+
             
 
             // let params=new URLSearchParams(location.search);
@@ -66,21 +75,18 @@
                 let frndUL=document.getElementById('frndUL')
 
                 for(let i=0;i<data.Friends.length;i++){
+                       allUsers.push(data.Friends[i])
                     
                 let list=document.createElement('li')
                 list.innerHTML=`${data.Friends[i].username}`
-                let check=data.Friends[i].status
-                if(check == 1){
-                    // let span=document.createElement('span')
-                    // list.appendChild(span)
-                    // span.classList.add('online')
-                    // span.innerHTML='.'     
-                    list.classList.add('frndli')
-                    frndUL.appendChild(list)
-                }else{
-                    
                 list.classList.add('frndli')
                 frndUL.appendChild(list)
+
+                let check=data.Friends[i].status    
+
+                if(check == 1){
+                        onlineUsers.push(data.Friends[i])
+                        
                 }
 
                 }

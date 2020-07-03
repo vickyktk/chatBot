@@ -238,7 +238,7 @@ io.on('connection',socket=>{
     //When the user disconnects
     socket.on('disconnect',()=>{
         console.log(`${users[socket.id]} left the chat`)
-        socket.broadcast.emit('userLeft',`${users[socket.id]} has left the chat`)
+        // socket.broadcast.emit('userLeft',`${users[socket.id]} has left the chat`)
 
         mongoUser.updateOne({email:`${users.email}`},{$set:{status:0}},(err,user)=>{
             if(err) throw err
