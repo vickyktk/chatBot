@@ -19,3 +19,28 @@ $(document).ready(function(){
         }
     })
 })
+
+
+
+
+
+
+let shareButton=document.getElementById('share')
+
+
+shareButton.addEventListener('click',async()=>{
+        
+        
+    try{
+        let data={
+            title:'CHATAPP',
+            text:`INSTANT CHAT MESSAGES`,
+            url:'https://realtimechatt.herokuapp.com/'
+        }
+        await navigator.share(data)
+        console.log('shared successfully')
+    }catch(err){
+        console.log(err)
+    }
+})
+

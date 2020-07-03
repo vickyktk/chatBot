@@ -3,7 +3,7 @@
 let frndUL=document.getElementById('frndUL')
 let friendSection=document.getElementById('friendDiv')
 let chatSection=document.getElementById('chatDiv')
-let shareButton=document.getElementById('share')
+let inviteButton=document.getElementById('inviteFr')
 let chatContainer=document.getElementById('chatContainer')
 let searchButton=document.getElementById('searchButt')
 let frndName=document.getElementById('frnd-name')
@@ -14,27 +14,7 @@ let letestChat=document.getElementById('latest-chats')
 let chatList=document.getElementById('chat-list')
 
 
-let text;
-if(user){
-    text=`${user.username} has invited you to CHATHERE`
-}else{
-    text='Instant CHAT messages'
-}
 //Enabling share the site
-let data={
-    title:'CHATAPP',
-    text:text,
-    url:'https://realtimechatt.herokuapp.com/'
-}
-
-shareButton.addEventListener('click',async()=>{
-    try{
-        await navigator.share(data)
-        console.log('shared successfully')
-    }catch(err){
-        console.log(err)
-    }
-})
 
 
 
@@ -174,7 +154,7 @@ setTimeout(()=>{
                 
         })
     } 
-},1000)
+},500)
 
 
     
@@ -210,6 +190,9 @@ for(let i=0;i<frndLI.length;i++){
     friendSection.style.display='none'
     chatSection.style.display='block'
     let chat=[user.username,name]
+
+
+    //When Someone want to start Chat
 
    socket.emit('startChat',chat)
 
@@ -339,4 +322,25 @@ for(let i=0;i<frndLI.length;i++){
 
 
 
-//When Someone want to start Chat
+inviteButton.addEventListener('click',async()=>{
+    
+    try{
+        let data={
+            title:'CHATAPP',
+            text:`${user.username} has invited you to CHATHERE`,
+            url:'https://realtimechatt.herokuapp.com/'
+        }
+        
+
+        await navigator.share(data)
+        console.log('shared successfully')
+    }catch(err){
+        console.log(err)
+    }
+})
+
+
+
+    
+    
+    
