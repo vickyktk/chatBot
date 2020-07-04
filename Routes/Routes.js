@@ -30,7 +30,7 @@ function notLoggedIN(req,res,next){
 
 Router.use('/account',userRoutes)
 
-Router.get('/',notLoggedIN,(req,res)=>{
+Router.get('/',(req,res)=>{
     res.render('Login')
 })
 

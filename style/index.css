@@ -285,3 +285,9 @@ input[type='submit']{
 #allUsers{
      margin-right: 10px;
 }
+
+
+.online{
+    color:green;
+    margin-left: 5px;
+}

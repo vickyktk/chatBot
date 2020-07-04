@@ -75,9 +75,7 @@ app.use(passport.initialize())
 app.use(passport.session())
 
 app.use('/style',express.static('style'))
-app.get('/',(req,res)=>{
-    res.render('Login')
-})
+
 app.use('/',Routes)
 
 

@@ -1,0 +1,11 @@
+For the styling of home page
+
+.home{
+    background-color: whitesmoke;
+    padding: 5px;
+}
+
+#chat-img{
+    width: 200px;
+    height: 200px;
+}

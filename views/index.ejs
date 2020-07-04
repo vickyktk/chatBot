@@ -80,14 +80,21 @@
                 let list=document.createElement('li')
                 list.innerHTML=`${data.Friends[i].username}`
                 list.classList.add('frndli')
-                frndUL.appendChild(list)
 
                 let check=data.Friends[i].status    
 
                 if(check == 1){
                         onlineUsers.push(data.Friends[i])
-                        
+                        let icon=document.createElement('i')
+                        icon.classList.add('fa')
+                        icon.classList.add('fa-circle')
+                        icon.classList.add('online')
+                        list.appendChild(icon)       
+
                 }
+                frndUL.appendChild(list)
+
+
 
                 }
 

@@ -8,17 +8,6 @@ mongoose.connect(url,({
     useUnifiedTopology:true
 }))
 
-mongoose.connection.on('connection',()=>{
-    console.log('mongoDB connected')
-})
-
-mongoose.connection.on('disconnect',()=>{
-    console.log('MongoDB disconnected')
-})
-
-mongoose.connection.on('error',(er)=>{
-    console.log('Error in connecting MongoDB',er)
-})
 let schema2=mongoose.Schema({
     users:{
         type:Array
