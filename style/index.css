@@ -25,6 +25,10 @@
     font-size: 27px;
 }
 
+.container-fluid{
+    /* width: auto */
+    width: auto;
+}
 
 
 .links{
@@ -110,7 +114,6 @@ span a{
     left:40%;
     width:230px;
     max-height: 1300px;
-
     line-height: normal;
     background-color: rgb(244, 243, 252,1);
     opacity: 2;
@@ -234,7 +237,7 @@ input[type='submit']{
 
 
 
-#username{
+#chatDiv #username{
     margin-top: 3px;
     margin-left: 30px;
 }

@@ -39,7 +39,7 @@ let user=mongoose.model('user',schema)
 
 module.exports=user
 
-// user.find({_id:'5ed8d5052240ee1f94c4a921'},(err,user)=>{
+// user.find({},(err,user)=>{
 //     if(err) throw err
 //     console.log(user)
 // })
