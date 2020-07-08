@@ -1,24 +1,27 @@
 <div class="info"> 
     <%- include('partials/messages') -%>
-    <h5>Your info is following</h5>
     <div class="header">
-        <table class="table table-responsive" style="color: white;">
-            <tr class="bg-dark" >
-                    
-                <th>Name</th>
-                <th>Email</th>
-                </tr>
-            <tr>
-                <td><%= user[0].username %></td>
-                <td><%= user[0].email %></td>
+    <h5>Your info is following</h5>
 
-            </tr>
+        <table class="table  ">
+            <thead class="thead-dark">
+                <tr class="bg-dark" >
+                    
+                    <th>Name</th>
+                    <th>Email</th>
+                    </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><%= user[0].username %></td>
+                    <td><%= user[0].email %></td>
+    
+                </tr>
+            </tbody>
+ 
 
         </table>
     </div>
-
-</div>
-<hr>
 <div class="changeInfo">
     <h5>Change Your Info</h5>
     <form action="account" method="POST">
@@ -28,7 +31,12 @@
         <input type="email" name="email" value="<%= user[0].email %>" required><br>
         <input type="submit" value="Update">
     </form>
-</div>
-<hr >
 
-<button class="btn btn-danger" id="delete" data-id="<%= user[0].id %> ">DELETE MY ACCOUNT</button class="btn btn-danger"> </li>
+    <hr >
+
+  <button class="btn btn-danger" id="delete" data-id="<%= user[0].id %> ">DELETE MY ACCOUNT</button class="btn btn-danger"> </li>
+
+</div>
+
+
+</div>

@@ -27,7 +27,10 @@
 
 .container-fluid{
     /* width: auto */
-    width: auto;
+    width: 100vw;
+}
+nav{
+    width: 100vw;
 }
 
 
@@ -58,7 +61,7 @@
     box-shadow: 0 0 10px 2px;
 }
 
-@media(max-width:720px){
+@media(max-width:768px){
    .login{
        left:20%;
        top:20%;
@@ -87,7 +90,7 @@ input{
     padding: 3px;
 }
 
-input[type='submit']{
+.login input[type='submit']{
     
     width: 60px;
     height: 33px;
@@ -141,8 +144,7 @@ span a{
     width:50px;
     height: 27px;
 } */
-.signup 
-input[type='submit']{
+.signup >input[type='submit']{
     
     width: 70px;
     height: 33px;
@@ -158,6 +160,26 @@ input[type='submit']{
 }
 
 
+/* Review.js */
+
+.reviewjs{
+    display: flex;
+    flex-direction: row;
+}
+
+#val-1,#val-2,#val-3,#val-4,#val-5{
+    color:white;
+}
+
+
+#your-reviews{
+    color: blanchedalmond;
+    padding: 20px;
+    border-radius: 10%;
+}
+
+
+
 
 
 
@@ -168,7 +190,7 @@ input[type='submit']{
     outline: none;
 }
 
-@media(max-width:720px){
+@media(max-width:768px){
     #msg{
         width: 70%;
     }
@@ -228,7 +250,8 @@ input[type='submit']{
 }
 
 #chatContainer{
-    position: relative;
+    display: flex;
+    flex-direction: column;
     height:400px;
     background-color: rgb(228, 228, 236);
     margin-top: 10px;
@@ -243,14 +266,6 @@ input[type='submit']{
 }
 
 
-/* Grren Dot of showing online */
-
-
-#online{
-    background-color: chartreuse;
-    border: 10px red;
-    margin-left: 80%;
-}
 
 
 .me{
@@ -289,8 +304,34 @@ input[type='submit']{
      margin-right: 10px;
 }
 
+/* Grren Dot of showing online */
 
 .online{
     color:green;
     margin-left: 5px;
+    
+}
+.navbar-nav li a{
+    color: white !important;
+}
+
+.dropdown-item a{
+    background-color: black;
+}
+
+
+
+/* Account.ejs */
+
+.info{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+
+@media(max-width:768px){
+    .info{
+        flex-direction: column;
+    }
 }

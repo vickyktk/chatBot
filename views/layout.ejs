@@ -14,7 +14,6 @@
 
         
       <!------------------ header ------------------->
-      <div class="container-fluid">
 		<div class="row" >
 			<div class="col-sm-12">
 				<nav class="navbar navbar-expand-sm bg-dark">
@@ -33,20 +32,21 @@
                         <div class="collapse navbar-collapse navbar" id="collapsiblenavbar"
             >  
 
-		<ul class="navbar-nav nav-pills ml-auto">
+		<ul class="navbar-nav ml-auto">
 
 					
 			
 				<%   if(user)  {  %>
-					<li class="nav-item dropdown"><a href="" class="nav-link dropdown-toggle" data-toggle="dropdown">Setting</a>
+					<li class="nav-item dropdown"><a href="" class="nav-link dropdown-toggle" data-toggle="dropdown"><%= user[0].username %></a>
 						<ul class="dropdown-menu">
 							<li class="dropdown-item"><a href="/account" class="nav-link ">Account</a></li>
 		
 						</ul></li>
 		
+			<li class="nav-item"><a href="/account/review" class="nav-link">Write to us</a></li>
+			<li class="nav-item"><a href="/Logout" class="nav-link">Logout</a></li>
+			<li class="nav-item"><a href="#" id="inviteFr" class="nav-link ">Invite Friends<i class="fa fa-share"></i></a></li>
 
-					<li class="nav-item"><a href="/Logout" class="nav-link">Logout</a></li>
-			<li class="nav-item"><a href="#" id="inviteFr" class="nav-link ">Invite Friends <i class="fa fa-share"></i></a></li>
 
 		
 			<%	} %>
@@ -69,7 +69,8 @@
 			</div>
 		</div>
     
-
+	<div class="container">
+    
         <%- body %>
     </div>
 
@@ -77,8 +78,10 @@
   
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-	<script src="style/script.js"></script>
-	<script src="style/delete.js"></script>
+	<script src="../style/script.js"></script>
+	<script src="../style/delete.js"></script>
+	<script src="../style/review.js"></script>
+
 
 	
 </body>

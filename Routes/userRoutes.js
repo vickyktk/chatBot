@@ -1,8 +1,8 @@
 let express=require('express')
-let Router=express.Router()
 let mongoUser=require('../Model/user')
-let bcrypt=require('bcryptjs')
 let chat=require('../Model/chat')
+let router=express.Router()
+let userReivews=require('../Model/review')
 
 
 
@@ -28,7 +28,9 @@ function notLoggedIN(req,res,next){
 }
 
 
-let router=express.Router()
+
+
+
 router.get('/',LoggedIN,(req,res)=>{
     res.render('account',{user:req.user})
 })
@@ -89,20 +91,56 @@ router.post('/',LoggedIN,(req,res)=>{
 
 })
 
-router.post('/delete',(req,res)=>{
 
-    let id=req.body.id;
 
-    mongoUser.deleteOne({_id:id},(err,cb)=>{
-        if(err) throw err
-        req.flash('success_msg','You have deleted Your Account')
-        req.user=''
-        res.redirect('/Login')
+router.get('/review',LoggedIN,(req,res)=>{
+    let currentUser=req.user[0].username
+    userReivews.find({byUser:currentUser},(err,reviews)=>{
+        if(err) throw err;
+        if(reviews){
+           res.render('review',{
+               user:req.user,
+            reviews})
+
+        }else{
+             res.render('review',{user:req.user})
+
+        }
     })
 })
 
 
-router.delete('/delete/:id',(req,res)=>{
+router.post('/review',LoggedIN,(req,res)=>{
+    let review=req.body.review;
+    let rate=req.body.rate;
+    req.checkBody('review','Please add a review').notEmpty()
+    req.checkBody('rate','Please Consider rating us').notEmpty()
+    let errors=req.validationErrors()
+    if(errors.length){
+        res.render('review',{
+            errors,
+            user:req.user
+        })
+    }else{
+
+        let obj={
+            byUser:req.user[0].username,
+            review:review,
+            ratings:rate
+        }
+
+        let newReview=new userReivews(obj)
+
+        newReview.save((err,review)=>{
+        if(err) throw err;
+        console.log(review)
+        req.flash('success_msg','Thanks For Your Review !!! KEEP CHATTING')
+        res.redirect('/account/review')    
+        })
+    }
+})
+
+router.delete('/delete/:id',LoggedIN,(req,res)=>{
     var id = req.params.id;
 
     mongoUser.deleteOne({_id:id},(err,cb)=>{
@@ -112,8 +150,6 @@ router.delete('/delete/:id',(req,res)=>{
         res.send('success')
     })
 })
-
-
 
 
 module.exports=router

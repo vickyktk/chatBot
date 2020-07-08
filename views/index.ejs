@@ -11,15 +11,17 @@
     </div>
     
     <!-- Sending chat and displaying it -->
-     <div class="container" id="chatContainer" >
-            <div class="bottom" id="bottom">
-                <form action="">
-                    <input type="text" placeholder="Enter Your message..." name="msg" id="msg">
-             <input type="submit" value="Send" id="send">
-                </form>
-            </div> 
+     <div id="chatContainer" >
+
 
          <div class="msg-container" id="msg-container">
+        </div>
+
+        <div class="bottom" id="bottom">
+            <form action="">
+                <input type="text" placeholder="Enter Your message..." name="msg" id="msg">
+         <input type="submit" value="Send" id="send">
+            </form>
         </div>
          </div>
 
@@ -30,15 +32,19 @@
     <input type="text" placeholder="Search Friends..." name="search" id="frnd-name">
     <button id="searchButt" class="btn btn-success">Search</button><br>
 
-    <div class="usersCount">
+    <div class="usersCount col-12">
         
     <span class="allUsers" id="allUsers">All Users(<span id="userCount" class="userCount"></span>)</span>
     <span class="onlineUsers" id="onlineUsers">Online Users(<span id="onlineCount" class="onlineCount"></span>)</span>
     </div>
-
+    <div class="col-sm-12">
+        
     <ul class="friends-list" id="frndUL">
         
     </ul>
+
+    </div>
+
 </div>
 
         <script src="/socket.io/socket.io.js"></script>
@@ -94,9 +100,8 @@
                 }
                 frndUL.appendChild(list)
 
-
-
-                }
+      }
+      show()
 
             })
 

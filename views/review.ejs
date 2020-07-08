@@ -1,0 +1,55 @@
+<div class="row reviewjs">
+    <%- include('partials/messages') -%>
+
+
+        <div class="col-sm-8">
+            <p>We Welcome the reviews of our Users</p>
+            <span class="bg-danger">Please keep Your reviews Respective</span>
+    
+            <form action="/account/review" method="POST" class="form">
+                <textarea name="review" id="review" placeholder="Write Your review here..." cols="25" rows="5"></textarea>
+                <input type="hidden" name="rate" id="rate">
+                <div class="ratings">
+                    <i class="fa fa-star"  id="val-1"></i>
+                    <i class="fa fa-star"  id="val-2"></i>
+                    <i class="fa fa-star"  id="val-3"></i>
+                    <i class="fa fa-star"  id="val-4"></i>
+                    <i class="fa fa-star"  id="val-5"></i>
+
+                </div>
+                <input type="submit" id="submit-review" value="Submit Your Review">
+            </form>
+        </div>
+
+    <% if(reviews.length > 0) { %>
+        <div class="col-sm-8 mt-5 bg-dark" id="your-reviews">
+            <h3>Your Reviews</h3>
+            <% reviews.forEach((val)=>{ %>
+                
+            <div id="reivew">
+                <span id="ratings" class="mt-5">
+                    <%  let rate =val.ratings %>
+                    <% for(let i=rate; i>0;i--){ %>
+                    <i class="fa fa-star" ></i>
+
+                        <% } %>
+
+                       <%= rate %>
+                </span>
+                <p id="user-review"><%= val.review %></p>
+                    <hr style="background-color: white; height: 3px;">
+                    <span>Admin Reply</span>
+                    <% if(val.adminReply) { %>
+                    <p id="admin-reply" class=" ml-5 mb-5"><%= val.adminReply %></p>
+                    <% } else { %>
+                        <p id="admin-reply" class=" ml-5">We Will Get to You Soon</p>
+
+                    <% } %>
+            </div>
+
+            <% }) %>
+    
+        </div>
+    
+        <% } %>
+</div>

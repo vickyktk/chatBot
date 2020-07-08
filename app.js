@@ -11,7 +11,10 @@ const expressValidator = require('express-validator')
 const expressLayouts=require('express-ejs-layouts')
 const Routes=require('./Routes/Routes')
 let mongoUser=require('./Model/user')
-let chat=require('./Model/chat')
+let chat=require('./Model/chat');
+const  Mongoose  = require('mongoose');
+let mongoStore=require('connect-mongo')(session)
+let userReivews=require('./Model/review')
 
 
 require('dotenv').config()
@@ -30,7 +33,8 @@ app.use(flash())
 app.use(session({
     secret:'yourAPp',
     resave:false,
-    saveUninitialized:false
+    saveUninitialized:false,
+    store:new mongoStore({mongooseConnection:Mongoose.connection})
 }))
 
 

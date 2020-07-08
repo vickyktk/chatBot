@@ -1,27 +1,24 @@
 //Getting the html elements
 
-let frndUL=document.getElementById('frndUL')
+let frndLI=document.getElementsByClassName('frndli')
+let frndUL= document.getElementById('frndUL')
 let friendSection=document.getElementById('friendDiv')
 let chatSection=document.getElementById('chatDiv')
 let inviteButton=document.getElementById('inviteFr')
 let chatContainer=document.getElementById('chatContainer')
 let searchButton=document.getElementById('searchButt')
 let frndName=document.getElementById('frnd-name')
-let frndLI=document.getElementsByClassName('frndli')
 let online_Users=document.getElementById('onlineCount')
 let all_Users=document.getElementById('userCount')
 let letestChat=document.getElementById('latest-chats')
 let chatList=document.getElementById('chat-list')
 
 
-//Enabling share the site
+function show(){
 
-
-
-setTimeout(()=>{
-
-    all_Users.innerHTML=allUsers.length
-    online_Users.innerHTML=onlineUsers.length
+    
+all_Users.innerHTML=allUsers.length
+online_Users.innerHTML=onlineUsers.length
     for(let i=0;i<frndLI.length;i++){
         //Clicking any username
         frndLI[i].addEventListener('click',()=>{
@@ -153,11 +150,9 @@ setTimeout(()=>{
                 
                 
         })
-    } 
-},700)
+    }
 
-
-    
+}  
 //When users Search for a friend
 
 searchButton.addEventListener('click',()=>{
@@ -314,8 +309,27 @@ for(let i=0;i<frndLI.length;i++){
 })
 }
         }else{
-            frndUL.innerHTML='No friend found with this name,Please try correct name or Search by Email'
-            console.log('No match')
+            frndUL.innerHTML='No friend found with this name,Please try correct name or Search by Email <br> <a href="#" id="invite-frnd">Invite Friends</a>'
+            
+let shareInvite=document.getElementById('invite-frnd')
+    
+    
+shareInvite.addEventListener('click',async()=>{
+    
+    try{
+        let data={
+            title:'CHATAPP',
+            text:`${user.username} has invited you to CHATHERE`,
+            url:'https://realtimechatt.herokuapp.com/'
+        }
+        
+
+        await navigator.share(data)
+        console.log('shared successfully')
+    }catch(err){
+        console.log(err)
+    }
+})
         }
     }
 })
@@ -339,8 +353,4 @@ inviteButton.addEventListener('click',async()=>{
     }
 })
 
-
-
-    
-    
     
