@@ -38,10 +38,10 @@ ratings4.addEventListener('click',()=>{
 })
 ratings5.addEventListener('click',()=>{
     rate.value=5;
-    ratings1.style.color='green'
-    ratings2.style.color='green'
-    ratings3.style.color='green'
-    ratings4.style.color='green'
-    ratings5.style.color='green'
+    ratings1.style.color='rgb(23, 240, 23)'
+    ratings2.style.color='rgb(23, 240, 23)'
+    ratings3.style.color='rgb(23, 240, 23)'
+    ratings4.style.color='rgb(23, 240, 23)'
+    ratings5.style.color='rgb(23, 240, 23)'
 
 })

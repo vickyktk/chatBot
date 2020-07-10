@@ -5,6 +5,7 @@ let bcrypt=require('bcryptjs')
 let passport=require('passport')
 let nodeMailer=require('nodemailer')
 let userRoutes=require('./userRoutes')
+let reviews=require('../Model/review')
 
 
 
@@ -31,7 +32,7 @@ function notLoggedIN(req,res,next){
 Router.use('/account',userRoutes)
 
 Router.get('/',(req,res)=>{
-    res.render('Login')
+    res.render('home')
 })
 
 
@@ -175,5 +176,21 @@ Router.get('/facebook',passport.authenticate('facebook',{authType:'rerequest',sc
 Router.get('/facebook/callback',passport.authenticate('facebook'),(req,res)=>{
     res.redirect('/index')
 })
+
+
+
+
+Router.get('/allReviews',(req,res)=>{
+    reviews.find({},(err,review)=>{
+        if(err) throw err
+        if(review){
+            res.render('allReviews',{review})
+        }else{
+            res.render('allReivews',{review:'No Reviews'})
+        }
+    })
+
+})
+
 
 module.exports=Router;

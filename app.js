@@ -14,7 +14,6 @@ let mongoUser=require('./Model/user')
 let chat=require('./Model/chat');
 const  Mongoose  = require('mongoose');
 let mongoStore=require('connect-mongo')(session)
-let userReivews=require('./Model/review')
 
 
 require('dotenv').config()

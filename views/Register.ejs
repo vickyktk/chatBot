@@ -1,9 +1,9 @@
 
-<div class="signup" style="z-index: -1;">
+<div class="signup" >
     <%- include('partials/messages')  -%>
 
-    <h3 style="color: blue;">Register Here</h3>
-    <hr style="background-color: blue; height:4px;">
+    <h3 style="color: white;">Register Here</h3>
+    <hr style="background-color:white; height:4px;">
 
     <a class="btn btn-danger" href="/google">Google</a>
 
@@ -19,7 +19,7 @@
             value="<%= typeof email !='undefined' ? email:'' %>" required><br>
             Password: <br>
             <input type="password" name="password" id="password" placeholder="Password" required><br>
-            <input type="submit" value="Register" ><span>OR <a href="/Login">Login</a></span>
+            <input type="submit" value="Register" > OR <span> <a href="/Login" style="color: tomato; text-decoration: underline;">Login Here</a></span>
         </form>
     </div>
 </div>

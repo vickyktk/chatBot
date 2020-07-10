@@ -133,7 +133,6 @@ router.post('/review',LoggedIN,(req,res)=>{
 
         newReview.save((err,review)=>{
         if(err) throw err;
-        console.log(review)
         req.flash('success_msg','Thanks For Your Review !!! KEEP CHATTING')
         res.redirect('/account/review')    
         })

@@ -8,7 +8,7 @@
 }
 
 .body{
-    background-color: rgb(146, 139, 180);
+    background-color: rgb(247, 246, 252);
 
 }
 
@@ -42,23 +42,21 @@ nav{
 
 /* Styling Login page */
 
-#login-body{
-    background-color:rgba(4, 7, 29, 0.795);
-}
 
 .login{
+    background-color:rgba(32, 34, 43, 0.795);
     position: absolute;
     top:20%;
     left:40%;
     width:230px;
     max-height: 670px;
     line-height: normal;
-    background-color: rgb(244, 243, 252,1);
     opacity: 2;
     padding:20px;
-    border: 1px solid grey;
+    border: 1px solid rgb(214, 205, 205);
     border-radius: 10%;
     box-shadow: 0 0 10px 2px;
+    color: white;
 }
 
 @media(max-width:768px){
@@ -77,6 +75,10 @@ nav{
 
 .login h3{
     margin-bottom: 20px;
+    color:white;
+}
+.login a{
+    color:white;
 }
 
 input{
@@ -112,18 +114,19 @@ span a{
 
 
 .signup{
+    background-color:rgba(32, 34, 43, 0.795);
     position: absolute;
     top:20%;
     left:40%;
     width:230px;
     max-height: 1300px;
     line-height: normal;
-    background-color: rgb(244, 243, 252,1);
     opacity: 2;
     padding:20px;
     border: 1px solid grey;
     border-radius: 10%;
     box-shadow: 0 0 10px 2px;
+    color: white;
 }
 
 
@@ -144,15 +147,14 @@ span a{
     width:50px;
     height: 27px;
 } */
-.signup >input[type='submit']{
-    
+.signup input[type='submit']{
     width: 70px;
     height: 33px;
-    background-color: rgb(58, 137, 216);
+    background-color: rgb(21, 127, 233);
     font-size: 18px;
     color: #fff;
+    text-align: center;
 }
-
 #userInfo{
     background-color: lightskyblue;
     height: 50px;
@@ -165,6 +167,7 @@ span a{
 .reviewjs{
     display: flex;
     flex-direction: row;
+    background-color: gray;
 }
 
 #val-1,#val-2,#val-3,#val-4,#val-5{
@@ -239,7 +242,6 @@ span a{
 
 /* Invitation button */
 #invite{
-    
     margin-left: 30px;
     margin-top: 15px;
     margin-bottom: 10px;
@@ -253,7 +255,7 @@ span a{
     display: flex;
     flex-direction: column;
     height:400px;
-    background-color: rgb(228, 228, 236);
+    background-color: rgb(176, 176, 202);
     margin-top: 10px;
     overflow: auto;
 }

@@ -1,11 +1,24 @@
-For the styling of home page
+/* For the styling of home page */
 
-.home{
-    background-color: whitesmoke;
-    padding: 5px;
+.home-flex{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 100%;
+}
+.head-hr{
+    background-color: black;
+    height: 7px;
 }
 
-#chat-img{
-    width: 200px;
-    height: 200px;
+.footer{
+    height: 100px;
+    margin-top: 30px;
+    padding-top: 10px;
+    background-color: rgb(29, 24, 24);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

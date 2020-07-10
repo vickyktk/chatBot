@@ -1,0 +1,42 @@
+
+    <% if(review.length > 0) { %>
+        <div class="col-sm-8 mt-5 bg-dark" id="your-reviews">
+            <%  let rated =review.length %>
+            <%  let total=0  %>
+            <% review.forEach((val)=>{ %>
+              <%  total += val.ratings %> 
+
+                    <% }) %>
+            <%  let avg= total/rated  %>
+
+
+            
+
+                
+                <h3>All Reviews (Average Ratings <%=  avg %> )</h3>
+
+            <% review.forEach((val)=>{ %>
+
+                
+            <div id="reivew">
+                <span id="ratings" class="mt-5">
+                    <%  let rate =val.ratings %>
+                    <% for(let i=rate; i>0;i--){ %>
+                    <i class="fa fa-star" ></i>
+
+                        <% } %>
+
+                       <%= rate %>(<%= val.byUser %>)
+
+                </span>
+                <p id="user-review"><%= val.review %></p>
+                    <hr style="background-color: white; height: 3px;">
+
+            </div>
+
+            <% }) %>
+    
+        </div>
+    
+        <% } %>
+</div>
