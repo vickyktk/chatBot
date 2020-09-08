@@ -64,21 +64,22 @@ passport.use('google' ,new GoogleStrategy({
                  //Sending success Email
 
                  var transport = nodeMailer.createTransport({
-                    host: process.env.Host,
-                    port:process.env.EMAIL_Port,
+                    // host: process.env.Host,
+                    // port:process.env.EMAIL_Port,
+                    service:'gmail',
                     auth: {
-                      user: process.env.Username,
-                      pass: process.env.Password
+                      user: process.env.gmail_username,
+                      pass: process.env.gmail_password
                     }
                   });
 
-                  var mailOptions = {
-                    from: '"CHATEHERE TEAM" <waqasktk81@gmail.com>',
-                    to: email,
-                    subject: 'Nice Nodemailer test',
-                    text: 'Hey there, it’s our first message sent with Nodemailer ;) ', 
-                    html: '<b>Hey there! </b><br> This is our first message sent with Nodemailer'
-                };
+              var mailOptions = {
+                from: '"CHATHERE TEAM" <catch99technical@gmail.com>',
+                to: user.email,
+                subject: 'Welcome to CHATHERE',
+                text: 'You have successfully signed up ', 
+                html: '<a href="https://realtimechatt.herokuapp.com/Login">Log In NOW</a>'
+            };
 
                 transport.sendMail(mailOptions, (error, info) => {
                     if (error) {
@@ -133,21 +134,22 @@ passport.use('facebook',new FbStrategy({
          //Sending success Email
          
          var transport = nodeMailer.createTransport({
-            host: process.env.Host,
-            port:process.env.EMAIL_Port,
+            // host: process.env.Host,
+            // port:process.env.EMAIL_Port,
+            service:'gmail',
             auth: {
-              user: process.env.Username,
-              pass: process.env.Password
+              user: process.env.gmail_username,
+              pass: process.env.gmail_password
             }
           });
 
-          var mailOptions = {
-            from: '"CHATEHERE TEAM" <waqasktk81@gmail.com>',
-            to: email,
-            subject: 'Nice Nodemailer test',
-            text: 'Hey there, it’s our first message sent with Nodemailer ;) ', 
-            html: '<b>Hey there! </b><br> This is our first message sent with Nodemailer'
-        };
+      var mailOptions = {
+        from: '"CHATHERE TEAM" <catch99technical@gmail.com>',
+        to: user.email,
+        subject: 'Welcome to CHATHERE',
+        text: 'You have successfully signed up ', 
+        html: '<a href="https://realtimechatt.herokuapp.com/Login">Log In NOW</a>'
+    };
 
         transport.sendMail(mailOptions, (error, info) => {
             if (error) {

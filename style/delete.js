@@ -10,7 +10,6 @@ $(document).ready(function(){
             url:'account/delete/'+id,
             success:function(response){
                 window.location.href='/Login'
-                alert('Account deleted')
             },
             error:function(err){
                 console.log(err)

@@ -121,3 +121,24 @@ module.exports=chats
 // chats.find({},(e,c)=>{
 //     console.log(c)
 // })
+
+
+// chats.find({users:{$in:['Virat Kohli33']}},(err,user)=>{
+//     if(err) throw err
+//     user.forEach((val)=>{
+//         if(val.chat.length>0){
+
+//             val.chat.forEach((obj)=>{
+    
+//                     let time=obj.time
+//                     chats.find({chat:{$in:[time]}},(err,res)=>{
+//                         if(err) throw err
+//                         console.log(res)
+//                     })
+  
+//               })
+
+//         }
+
+//     })
+// })

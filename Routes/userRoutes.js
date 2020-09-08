@@ -58,38 +58,67 @@ router.post('/',LoggedIN,(req,res)=>{
             user:req.user
         })
     }else{
+        let errors=[]
+        //Checking if user already exist
+        mongoUser.find({username:username,_id:{$nin:[id]}},(err,user)=>{
+            if(err) throw err;
+            if(user.length>0){
 
-        mongoUser.updateOne({_id:id},{$set:{username:username,email:email}},(err,cb)=>{
-        if(err) throw err
-
-                    
-            let name=hiddenUsername
-            chat.find({},(err,user)=>{
-                if(err) throw err
-                user.forEach((val,index,arr)=>{
-                    let ar=val.users
-                    let check=ar.includes(name)
-
-                    if(check){
-                        let  index=ar.indexOf(name)
-                        ar[index]=username
-
-                        chat.updateOne({_id:val._id},{$set:{users:ar}},(err,cd)=>{
-                            if(err) throw err;
-                            console.log('Updated chats')
-                        })
-                    }else{
-                        console.log('chats not updated')
-                    }
-                })
+                errors.push({msg:'This Username is taken !!!Try Another Username'})
+            res.render('account',{
+                errors,
+                username,
+                email,
+                user:req.user
             })
-        req.flash('success_msg','Successfully Updated your data')
-        res.redirect('/account')
+            }else{
+                mongoUser.find({email:email,_id:{$nin:[id]}},(err,user)=>{
+                    if(err) throw err;
+                if(user.length>0) {
+                    errors.push({msg:'Email Already Exist !!!Try Another Email Address'})
+                    res.render('account',{
+                        errors,
+                        username,
+                        email,
+                        user:req.user
+
+                    })
+                }
+                else{
+                    
+   mongoUser.updateOne({_id:id},{$set:{username:username,email:email}},(err,cb)=>{
+    if(err) throw err
+
+                
+        let name=hiddenUsername
+        chat.find({users:{$in:[name]}},(err,user)=>{
+            if(err) throw err
+            user.forEach((val)=>{
+                let ar=val.users
+
+                    let  index=ar.indexOf(name)
+                    ar[index]=username
+
+                    chat.updateOne({_id:val._id},{$set:{users:ar}},(err,cd)=>{
+                        if(err) throw err;
+                        console.log('Updated chats')
+                    })
+
+
+            })
         })
-        //Checking if user already exist    
+    req.flash('success_msg','Successfully Updated your data')
+    res.redirect('/account')
+    })
+
+                }
+        })
+ 
     }
 
 })
+    }
+    })
 
 
 

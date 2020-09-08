@@ -65,67 +65,83 @@ Router.post('/Register',(req,res)=>{
     }else{
         let errors=[]
         //Checking if user already exist
-        
-        mongoUser.find({email:email},(err,user)=>{
+        mongoUser.find({username:username},(err,user)=>{
             if(err) throw err;
-        if(user.length>0) {
-            errors.push({msg:'Email Already Exist !!!Try Another Email Address'})
+            if(user.length>0){
+                errors.push({msg:'This Username is taken !!!Try Another Username'})
             res.render('Register',{
                 errors,
                 username,
                 email
             })
-        }else{
-            let user={
-                username,
-                email,
-                googleID:'',
-                FBID:'',
-                password,
-                status:0
-            }
-            //hashing the password
-            bcrypt.hash(user.password,10,(err,hashedPass)=>{
-                if(err) throw err
-                user.password=hashedPass
-                
-                //sAVING THE uSER TO db
-                let newUser=new mongoUser(user)
-                newUser.save((err,user)=>{
-                    if(err) throw err
-                    console.log(user)
-                    req.flash('success_msg','Successfully Signed UP !!! Login Now')
-                    res.redirect('/Login')
-                     //Sending success Email
-
-                     var transport = nodeMailer.createTransport({
-                        host: process.env.Host,
-                        port:process.env.EMAIL_Port,
-                        auth: {
-                          user: process.env.Username,
-                          pass: process.env.Password
-                        }
-                      });
-
-                  var mailOptions = {
-                    from: '"CHATEHERE TEAM" <waqasktk81@gmail.com>',
-                    to: user.email,
-                    subject: 'Nice Nodemailer test',
-                    text: 'Hey there, it’s our first message sent with Nodemailer ;) ', 
-                    html: '<b>Hey there! </b><br> This is our first message sent with Nodemailer'
-                };
-
-                transport.sendMail(mailOptions, (error, info) => {
-                    if (error) {
-                        return console.log(error);
+            }else{
+                mongoUser.find({email:email},(err,user)=>{
+                    if(err) throw err;
+                if(user.length>0) {
+                    errors.push({msg:'Email Already Exist !!!Try Another Email Address'})
+                    res.render('Register',{
+                        errors,
+                        username,
+                        email
+                    })
+                }else{
+                    let user={
+                        username,
+                        email,
+                        googleID:'',
+                        FBID:'',
+                        password,
+                        status:0
                     }
-                    console.log('Message sent: %s', info.messageId);
-            });
+                    //hashing the password
+                    bcrypt.hash(user.password,10,(err,hashedPass)=>{
+                        if(err) throw err
+                        user.password=hashedPass
+                        
+                        //sAVING THE uSER TO db
+                        let newUser=new mongoUser(user)
+                        newUser.save((err,user)=>{
+                            if(err) throw err
+                            console.log(user)
+                            req.flash('success_msg','Successfully Signed UP !!! Login Now')
+                            res.redirect('/Login')
+                             //Sending success Email
+        
+                             var transport = nodeMailer.createTransport({
+                                // host: process.env.Host,
+                                // port:process.env.EMAIL_Port,
+                                service:'gmail',
+                                auth: {
+                                  user: process.env.gmail_username,
+                                  pass: process.env.gmail_password
+                                }
+                              });
+        
+                          var mailOptions = {
+                            from: '"CHATHERE TEAM" <catch99technical@gmail.com>',
+                            to: user.email,
+                            subject: 'Welcome to CHATHERE',
+                            text: 'You have successfully signed up ', 
+                            html: '<a href="https://realtimechatt.herokuapp.com/Login">Log In NOW</a>'
+                        };
+        
+                        transport.sendMail(mailOptions, (error, info) => {
+                            if (error) {
+                                return console.log(error);
+                            }
+                            console.log('Message sent: %s', info.messageId);
+                    });
+                        })
+                    })
+        
+                }
                 })
-            })
 
-        }
+            }
         })
+
+        
+       
     }
 })
 
