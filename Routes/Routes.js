@@ -200,7 +200,9 @@ Router.get('/allReviews',(req,res)=>{
     reviews.find({},(err,review)=>{
         if(err) throw err
         if(review){
-            res.render('allReviews',{review})
+            res.json({'allReviews':review})
+            
+//             res.render('allReviews',{review})
         }else{
             res.render('allReivews',{review:'No Reviews'})
         }
