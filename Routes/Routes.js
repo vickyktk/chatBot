@@ -35,6 +35,10 @@ Router.get('/',(req,res)=>{
     res.render('home')
 })
 
+Router.get('/privacy',(req,res)=>{
+    res.render('privacy')
+})
+
 
 
 Router.get('/Register',notLoggedIN,(req,res)=>{
