@@ -142,6 +142,8 @@ router.get('/review',LoggedIN,(req,res)=>{
 router.post('/review',LoggedIN,(req,res)=>{
     let review=req.body.review;
     let rate=req.body.rate;
+    var date = new Date();
+	var current_date = date.getFullYear()+"-"+(date.getMonth()+1)+"-"+ date.getDate();
     req.checkBody('review','Please add a review').notEmpty()
     req.checkBody('rate','Please Consider rating us').notEmpty()
     let errors=req.validationErrors()
@@ -155,15 +157,16 @@ router.post('/review',LoggedIN,(req,res)=>{
         let obj={
             byUser:req.user[0].username,
             review:review,
-            ratings:rate
+            ratings:rate,
+            date:current_date,
         }
 
         let newReview=new userReivews(obj)
 
         newReview.save((err,review)=>{
-        if(err) throw err;
-        req.flash('success_msg','Thanks For Your Review !!! KEEP CHATTING')
-        res.redirect('/account/review')    
+            if(err) throw err;
+            req.flash('success_msg','Thanks For Your Review !!! KEEP CHATTING')
+            res.redirect('/account/review')    
         })
     }
 })

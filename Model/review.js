@@ -24,8 +24,8 @@ let schema=new mongoose.Schema({
     },
     adminReply:{
         type:String
-    }
-    
+    },
+    date: { type: String },
 })
 
 let userReviews=new mongoose.model('reviews',schema);

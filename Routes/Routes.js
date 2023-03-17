@@ -193,20 +193,16 @@ Router.get('/facebook/callback',passport.authenticate('facebook'),(req,res)=>{
     res.redirect('/index')
 })
 
-
-
-
 Router.get('/allReviews',(req,res)=>{
-    reviews.find({},(err,review)=>{
+    reviews.find({$query: {},$orderby: { date : 1 }},(err,review)=>{
         if(err) throw err
         if(review){
-            
+            // res.status(200).json({allReviews:review})
             res.render('allReviews',{review})
         }else{
             res.render('allReivews',{review:'No Reviews'})
         }
     })
-
 })
 
 

@@ -15,6 +15,10 @@ let chat=require('./Model/chat');
 const  Mongoose  = require('mongoose');
 let mongoStore=require('connect-mongo')(session)
 
+const cors = require('cors')
+
+app.use(cors())
+
 
 require('dotenv').config()
 require('./Routes/passport');
@@ -249,7 +253,7 @@ io.on('connection',socket=>{
 
 
 
-let port= process.env.PORT || 3000
+let port= process.env.PORT || 5000
 
 server.listen(port,()=>{
     console.log('Server started')
