@@ -41,7 +41,7 @@ passport.use('google' ,new GoogleStrategy({
     clientID:process.env.gclientID,
     clientSecret:process.env.gclientSecret,
     callbackURL:'http://localhost:3000/google/callback',
-    callbackURL:'https://realtimechatt.herokuapp.com/google/callback'
+    callbackURL:'https://chatbot-production-defd.up.railway.app/google/callback'
 },(accessToken,refreshToken,profile,cb)=>{
     let username=profile.displayName
     let email=profile._json.email
@@ -78,7 +78,7 @@ passport.use('google' ,new GoogleStrategy({
                 to: user.email,
                 subject: 'Welcome to CHATHERE',
                 text: 'You have successfully signed up ', 
-                html: '<a href="https://realtimechatt.herokuapp.com/Login">Log In NOW</a>'
+                html: '<a href="https://chatbot-production-defd.up.railway.app/Login">Log In NOW</a>'
             };
 
                 transport.sendMail(mailOptions, (error, info) => {
@@ -105,7 +105,7 @@ passport.use('facebook',new FbStrategy({
     clientID:process.env.FBclientID,
     clientSecret: process.env.FBclientSecret,
     callbackURL: "http://localhost:3000/facebook/callback",
-    callbackURL:'https://realtimechatt.herokuapp.com/facebook/callback',
+    callbackURL:'https://chatbot-production-defd.up.railway.app/facebook/callback',
 
     profileFields: ['id', 'displayName', 'photos', 'email']
     },
@@ -148,7 +148,7 @@ passport.use('facebook',new FbStrategy({
         to: user.email,
         subject: 'Welcome to CHATHERE',
         text: 'You have successfully signed up ', 
-        html: '<a href="https://realtimechatt.herokuapp.com/Login">Log In NOW</a>'
+        html: '<a href="https://chatbot-production-defd.up.railway.app/Login">Log In NOW</a>'
     };
 
         transport.sendMail(mailOptions, (error, info) => {
