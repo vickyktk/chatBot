@@ -18,7 +18,7 @@ function LoggedIN(req,res,next){
           req.flash('error','Login first to view this page')
         res.redirect('/Login')
       }
-  }
+}
 
 function notLoggedIN(req,res,next){
     if(req.isAuthenticated()){
@@ -201,7 +201,6 @@ Router.get('/allReviews',(req,res)=>{
     reviews.find({$query: {},$orderby: { date : 1 }},(err,review)=>{
         if(err) throw err
         if(review){
-            // res.status(200).json({allReviews:review})
             res.render('allReviews',{review})
         }else{
             res.render('allReivews',{review:'No Reviews'})
