@@ -9,7 +9,7 @@ let chatContainer=document.getElementById('chatContainer')
 let searchButton=document.getElementById('searchButt')
 let frndName=document.getElementById('frnd-name')
 let online_Users=document.getElementById('onlineCount')
-let all_Users=document.getElementById('userCount')
+let all_Users_div=document.getElementById('userCount')
 let letestChat=document.getElementById('latest-chats')
 let chatList=document.getElementById('chat-list')
 
@@ -17,7 +17,7 @@ let chatList=document.getElementById('chat-list')
 function show(){
 
     
-all_Users.innerHTML=allUsers.length
+all_Users_div.innerHTML=allUsers.length
 online_Users.innerHTML=onlineUsers.length
     for(let i=0;i<frndLI.length;i++){
         //Clicking any username
@@ -25,14 +25,16 @@ online_Users.innerHTML=onlineUsers.length
     
     
         let name=frndLI[i].textContent
-    
+        let userid = frndLI[i].dataset.userid
+
         let username=document.getElementById('username')
         let type=document.getElementById('type')
     
         username.textContent +=name
         friendSection.style.display='none'
         chatSection.style.display='block'
-        let chat=[user.username,name]
+        let chat=[user.id,userid]
+
     
        socket.emit('startChat',chat)
     
@@ -64,7 +66,7 @@ online_Users.innerHTML=onlineUsers.length
                 socket.on('savedChat',(data)=>{
                 for(let i=0;i<data.length;i++){
                     var para=document.createElement('p')
-                    if(data[i].from==user.username){
+                    if(data[i].from==user.id){
                         para.classList.add('me')
                     para.innerHTML=` ${data[i].msg} <br>`;
                     }else{
@@ -96,7 +98,7 @@ online_Users.innerHTML=onlineUsers.length
                     e.preventDefault()
                                     
                     var msg=document.getElementById('msg').value;
-                    socket.emit('newMsg',{msg:msg,user:user.username})
+                    socket.emit('newMsg',{msg:msg,user:user.id})
     
                     document.getElementById('msg').value=''
                     document.getElementById('msg').focus();
@@ -125,7 +127,7 @@ online_Users.innerHTML=onlineUsers.length
                 //Recieving the msg from the back-end and printing it on the client
                 socket.on('newMsg',(info)=>{
                     var para=document.createElement('p')
-                    if(info.from==user.username){
+                    if(info.from==user.id){
                         para.classList.add('me')
                     para.innerHTML=` ${info.msg} <br>`;
                     }else{
@@ -166,6 +168,7 @@ searchButton.addEventListener('click',()=>{
            let list=document.createElement('li')
             list.innerHTML=`${allUsers[i].username}`
             list.classList.add('frndli')
+            list.dataset.userid = allUsers[i]._id
             frndUL.appendChild(list)
             i=allUsers.length
             
@@ -174,8 +177,10 @@ for(let i=0;i<frndLI.length;i++){
     frndLI[i].addEventListener('click',()=>{
 
 
-
     let name=frndLI[i].textContent
+    let userid = frndLI[i].dataset.userid
+    console.log("userid",userid);
+    console.log("name",name);
 
     let username=document.getElementById('username')
     let type=document.getElementById('type')
@@ -184,7 +189,7 @@ for(let i=0;i<frndLI.length;i++){
     
     friendSection.style.display='none'
     chatSection.style.display='block'
-    let chat=[user.username,name]
+    let chat=[user.id,userid]
 
 
     //When Someone want to start Chat
@@ -220,7 +225,7 @@ for(let i=0;i<frndLI.length;i++){
             socket.on('savedChat',(data)=>{
             for(let i=0;i<data.length;i++){
                 var para=document.createElement('p')
-                if(data[i].from==user.username){
+                if(data[i].from==user.id){
                     para.classList.add('me')
                 para.innerHTML=` ${data[i].msg} <br>`;
                 }else{
@@ -253,7 +258,7 @@ for(let i=0;i<frndLI.length;i++){
                 e.preventDefault()
                                 
                 var msg=document.getElementById('msg').value;
-                socket.emit('newMsg',{msg:msg,user:user.username})
+                socket.emit('newMsg',{msg:msg,user:user.id})
 
                 document.getElementById('msg').value=''
                 document.getElementById('msg').focus();
@@ -282,7 +287,7 @@ for(let i=0;i<frndLI.length;i++){
             //Recieving the msg from the back-end and printing it on the client
             socket.on('newMsg',(info)=>{
                 var para=document.createElement('p')
-                if(info.from==user.username){
+                if(info.from==user.id){
                     para.classList.add('me')
                 para.innerHTML=` ${info.msg} <br>`;
                 }else{

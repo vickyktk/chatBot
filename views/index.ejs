@@ -6,8 +6,8 @@
 <div class="chats" id="chatDiv" style="display: none;">
     <div id=userInfo>
 
-    <span id="username"></span><br>
-    <span id="type"></span>
+        <span id="username"></span><br>
+        <span id="type"></span>
     </div>
     
     <!-- Sending chat and displaying it -->
@@ -85,6 +85,7 @@
                     
                 let list=document.createElement('li')
                 list.innerHTML=`${data.Friends[i].username}`
+                list.dataset.userid = data.Friends[i]._id
                 list.classList.add('frndli')
 
                 let check=data.Friends[i].status    
