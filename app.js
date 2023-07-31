@@ -92,7 +92,7 @@ io.on('connection',socket=>{
     let users={}
     
     //When new user Login
-    socket.on('user',(data)=>{
+    socket.on('user', async(data)=>{
         console.log(`${data.username} Joind the chat`)
 
                 
@@ -102,32 +102,8 @@ io.on('connection',socket=>{
         })
 
 
-        
-        //finding Friends of the current User
-        mongoUser.find({},(err,user)=>{
-
-            var Friends=[];
-
-            if(err) throw err
-            
-            for(let i=0;i<user.length;i++){
-                            // Friends=user[i].username
-                            if(user[i].username == data.username){
-
-                            }else{
-                            Friends.push(user[i])
-
-                            }
-        
-                }
-
-
-                //Sending the welcome message and all users
-        socket.emit('welcome',{data,Friends})
-
-        })
-
-        
+        const db_users = await mongoUser.find({email: {$ne: data.email}}).sort({status:-1})
+        socket.emit('welcome',{"Friends":db_users})
         users[socket.id]=data.username;
         users['email']=data.email
     })
