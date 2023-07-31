@@ -31,7 +31,8 @@ let schema=mongoose.Schema({
     },
     status:{
         type:Number
-    }
+    },
+    token:{type:String}
 })
 
 
