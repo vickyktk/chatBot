@@ -10,6 +10,7 @@ const passport = require('passport')
 const expressValidator = require('express-validator')
 const expressLayouts=require('express-ejs-layouts')
 const Routes=require('./Routes/Routes')
+const APIRoutes=require('./Routes/APIRoutes')
 let mongoUser=require('./Model/user')
 let chat=require('./Model/chat');
 const  Mongoose  = require('mongoose');
@@ -84,6 +85,7 @@ app.use(passport.session())
 app.use('/style',express.static('style'))
 
 app.use('/',Routes)
+app.use('/api',APIRoutes)
 
 
 io.on('connection',socket=>{
