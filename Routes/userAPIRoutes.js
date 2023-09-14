@@ -145,5 +145,6 @@ module.exports = {
     registerUser,
     LoginUser,
     getUser,
-    writeReview
+    writeReview,
+    mongoUser
 }
