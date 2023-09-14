@@ -13,7 +13,8 @@ const verifyToken = async (req, res, next)=>{
             next();
         } catch (error) {
             return res.status(200).json({
-                success:false
+                success:false,
+                message:error.name
             })
         }
     }
