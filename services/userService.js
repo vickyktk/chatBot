@@ -141,10 +141,47 @@ const GenerateTokenJWT = (id)=>{
         }
     )
 }
+
+const getAllUsers = async(req,res)=>{
+    try {
+        const {page = 1} = req.query
+        const id = req.user ? req.user._id:"jh45345jbhsf"
+        const users = await mongoUser.find({_id:{$ne:id}},{ password: 0 }).limit(20).skip((page-1) * 20);
+        const totalUsers = await mongoUser.count();
+        res.status(200).json({
+            users,
+            totalUsers,
+            current:page
+        })
+    } catch (error) {
+       res.status(400).send("There was an error fetching users" + error) 
+    }
+}
+
+const searchUser = async(req,res)=>{
+    try {
+        const { search = '' } = req.query
+        const users = await mongoUser.find({
+           $or: [
+               { username: { $regex: search, $options: 'i' } },
+               { email: { $regex: search, $options: 'i' } },
+           ],    
+       },
+       { password: 0 }
+       );
+
+       res.status(200).json(users)
+    } catch (error) {
+       res.status(400).send("There was an error fetching users" + error) 
+    }
+}
+
+
 module.exports = {
     registerUser,
     LoginUser,
     getUser,
     writeReview,
-    mongoUser
+    getAllUsers,
+    searchUser
 }
